@@ -17,7 +17,7 @@ Make sure that this works before continuing.
 3. Use **Entity Framework 6** from Package Manager in Visual Studio 2022 with the relevant commands as stated below
 
 ## Convert the XML-style project to SDK-style project
-1. We suggest you use Copilot or similar tools to convert the .csproj file
+1. We suggest you use Visual Studio Upgrade Assistant to convert the .csproj type. ChatGPT / Copilot might also be a valid option, but be aware of potential errors that may arise.
 
     [WhoOwesWhat.DataProvider_xml_version.csproj](https://github.com/sopra-steria-norge/cload-akademiet-course-files/blob/main/code/db-migration/WhoOwesWhat.DataProvider_xml_version.csproj)
 
@@ -42,7 +42,7 @@ In Package Manager run the commands:
 - Enable-Migrations
 - Add-Migration "InitialMigration"
 
-PS. Might have to move the `MigrationConfigurations.cs` file into the new folder 'Migrations' that might be auto-generated when adding InitialMigration. 
+PS. Might have to move the `MigrationConfigurations.cs` file into the new folder 'Migrations' that should be auto-generated when adding InitialMigration. 
 
 Continue in Package Manager and run the command to seed the database (or update if already created): 
 - Database-Update
