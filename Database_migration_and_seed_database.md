@@ -1,4 +1,4 @@
-# Migrate database and update Entity Framework - HOW TO
+# Add migration, update to Entity Framework 6 and seed a new WhoOwesWhat database - HOW TO
 
 ## Restore nuget packages and run project
 
