@@ -79,6 +79,9 @@ You should now have the seeded database `WhoOwesWhat` visible in the dropdown me
 
 ![Successfully seeded database](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/db-migration-images/SSMS_successfully_seeded_WhoOwesWhat_database.png)
 
+## Add connection string to `AppSettings.json` in `WhoOwesWhat.Service.Net8`
+
+
 ## Relevant commands
 
 **Package manager**
