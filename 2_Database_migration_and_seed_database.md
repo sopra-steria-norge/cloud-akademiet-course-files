@@ -40,7 +40,12 @@ In order to be able to seed the WhoOwesWhat database to your SQL Server the corr
         }
 
 ## Make sure to enable migrations
-In `Package Manager` run the command:
+Make sure that you have selected the correct project as `Default project` in `Package Manager`. 
+
+Set `Default project` to `WhoOwesWhat.DataProvider`. This must be done in order to make the Entity Framework commands find the DbContext `WhoOwesWhatContext`.
+![Set correct default project](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/db-migration-images/Set_default_project_Package_Manager.png)
+
+Continue in `Package Manager` and run the command:
 - Enable-Migrations
 
 This should result in the creation of the folder `Migrations` in the `WhoOwesWhat.DataProvider` project.
