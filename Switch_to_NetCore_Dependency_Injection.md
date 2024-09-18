@@ -12,10 +12,12 @@ Move `UserController.cs` from the `WhoOwesWhat.Service.Controller` project to th
 
 ### Add Necessary Dependencies
 Add all the required project dependencies to ensure the controllers can run in the new project. Check the using statements at the top of `UserController.cs` to see what projects are needed.
+
 ![Project dependencies](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/dependency-injection-images/project-dependencies.png)
 
 ### Sync Namespaces
 Right click the project file and click `Sync Namespaces` to automatically update the namespaces.
+
 ![Sync namespaces](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/dependency-injection-images/sync-namespaces.png) 
 
 ### Remove Interface
@@ -112,10 +114,12 @@ builder.Services.AddServices();
 Install the existing version of Entity Framework without upgrading. We will upgrade / migrate to `Entity Framework Core` later in the course.
 Easiest way is when you have added the `WhoOwesWhatContext` and get a red line underneath, right click it and select `Quick Actions and Refactorings...` or `CTRL + .` when the cursor is on the line.
 Then select `Install package 'Entity Framework'` and `Use local version '6.5.1'`.
+
 ![Install Entity Framework](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/dependency-injection-images/install-entity-framework.png) 
 
 ### Install Log4Net Dependency
 Install the `Microsoft.Extensions.Logging.Log4Net.AspNetCore` package (rest assured, we will replace Log4Net later). Right click the project and select `Manage NuGet Packages...`.
+
 ![Manage NuGet Packages](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/dependency-injection-images/manage-nuget-packages.png) 
 ![Install Log4Net](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/dependency-injection-images/install-log4net.png) 
 
