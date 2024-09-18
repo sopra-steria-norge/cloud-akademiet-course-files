@@ -8,50 +8,71 @@ Make sure that `WhoOwesWhat.Service.Net8` is `Set as start up project` and run t
 
 On the first run you should get a `System.IO.FileNotFoundException` that refers to the `SqlClient`.
 
+![EF Core not working from CLI for the project](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/db-migration-images/System.IO.FileNotFoundException_on_first_run.png)
+
 Make sure that this works before continuing.
 
-## `cd` into the correct folder from your your command line interface (CLI)
+## `cd` into the correct folder from your your command line interface (CLI) in Visual Studio
 
 --> `cd WhoOwesWhat.DataProvider`
 
 ## Make Entity Framework work
-1. Make sure that a supported version of Entity Framework is used, and that you can use this via your CLI. In this case we have a .NET Framework project, which means that we cannot use Entity Framework Core until we have migrated the service to .NET Core (i.e. .NET 8). Before we reach that point, we will use the latest supported version of **Entity Framework 6**.
+1. Install dotnet ef as global tool with the following command: `dotnet tool install --global dotnet-ef` in your CLI.
+2. Make sure that a supported version of Entity Framework is used, and that you can use this via your CLI. In this case we have a .NET Framework project, which means that we cannot use Entity Framework Core until we have migrated the service to .NET Core (i.e. .NET 8). Before we reach that point, we will use the latest supported version of **Entity Framework 6**.
 
 ![EF Core not working from CLI for the project](https://github.com/sopra-steria-norge/cload-akademiet-course-files/blob/main/images/db-migration-images/ef-core-does-not-work.png)
 
-2. Install latest supported version of **Entity Framework 6** for the project WhoOwesWhat.DataProvider
-3. Use **Entity Framework 6** from Package Manager in Visual Studio 2022 with the relevant commands as stated below
+3. Install latest supported version of **Entity Framework 6.5.1** for the project WhoOwesWhat.DataProvider
+![Manage nuget packages](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/db-migration-images/Update_EntityFrameworkNugetPackage_EF6.5.1.png)
+3. Use **Entity Framework 6** from Package Manager in Visual Studio 2022 with the relevant commands as stated below (using `Package manager` instead of `Powershell` since our project file (.csproj) is not an SDK-style project) 
 
-## Convert the XML-style project to SDK-style project
-1. We suggest you use Visual Studio Upgrade Assistant to convert the .csproj type. ChatGPT / Copilot might also be a valid option, but be aware of potential errors that may arise.
-
-    [WhoOwesWhat.DataProvider_xml_version.csproj](https://github.com/sopra-steria-norge/cload-akademiet-course-files/blob/main/code/db-migration/WhoOwesWhat.DataProvider_xml_version.csproj)
-
-    [WhoOwesWhat.DataProvider_SDK_style.csproj](https://github.com/sopra-steria-norge/cload-akademiet-course-files/blob/main/code/db-migration/WhoOwesWhat.DataProvider_SDK_style.csproj)
-
-    This is done to make it easier for Entity framework to seed the database for your project
-
-- Remember to restore nuget packages and build the solution after converting to SDK style project. Might help to restart Visual Studio also. 
-
-## Add connection string to `web.config`
+## Add connection string directly to the `WhoOwesWhatContext` contructor
 In order to be able to seed the WhoOwesWhat database to your SQL Server the correct connection string must be added. This should look somthing like this: 
 
-`<connectionStrings>
-    <add name="DefaultConnection" connectionString="Data Source=.\SQLEXPRESS;Integrated Security=True;Database=WhoOwesWhat;Connect 
-    Timeout=30;Encrypt=False;" providerName="System.Data.SqlClient" />
-</connectionStrings>`
+        public WhoOwesWhatContext()
+            : base("Data Source=.\\SQLEXPRESS;Integrated Security=True;Database=WhoOwesWhat;Connect Timeout=30;Encrypt=False;")
+        {
+            this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.ProxyCreationEnabled = false;
+            this.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<WhoOwesWhatContext, MigrationConfigurations>());
+
+        }
+
+## Make sure to enable migrations
+In `Package Manager` run the command:
+- Enable-Migrations
+
+This should result in the creation of the folder `Migrations` in the `WhoOwesWhat.DataProvider` project.
+
+![Created new folder Migrations and configuration class](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/db-migration-images/Enable_migrations_and_create_Migration_folder.png)
+
+Since we already have an existing configuration file `MigrationConfigurations.cs` we want to use this class instead of the auto-generated class. 
+
+Delete the file you generated `Configuration.cs` and move (cut & paste) the `MigrationConfigurations.cs` file into the new folder 'Migrations'.
 
 ## Add a initial migration
 
-In Package Manager run the commands:
+In `Package Manager` run the command:
 
-- Enable-Migrations
 - Add-Migration "InitialMigration"
 
-PS. Might have to move the `MigrationConfigurations.cs` file into the new folder 'Migrations' that should be auto-generated when adding InitialMigration. 
+This should result in the creation of a new class `..._InitialMigration` in the folder `Migrations` in the `WhoOwesWhat.DataProvider` project.
 
-Continue in Package Manager and run the command to seed the database (or update if already created): 
-- Database-Update
+## Seed the database
+The reason we are doing this is that we want to seed the database for the `WhoOwesWhat` service before migrating to .NET 8, so that we can get an overview of the existing relations and data structure.
+
+Continue in `Package Manager` and run the command to seed the database (or update if already created): 
+- Update-Database -Verbose
+
+## Verify that the database was seeded into your local db (SqlExpress is already set up)
+Enter Microsoft SQL Server Management Studio (SSMS) and log into SQLEXPRESS. Remeber to tick the `Trust server certificate` box.
+
+![SSMS log-in](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/db-migration-images/SSMS_login.png)
+
+You should now have the seeded database `WhoOwesWhat` visible in the dropdown menu. 
+
+![Successfully seeded database](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/db-migration-images/SSMS_successfully_seeded_WhoOwesWhat_database.png)
 
 ## Relevant commands
 
@@ -59,6 +80,8 @@ Continue in Package Manager and run the command to seed the database (or update 
 - Enable-Migrations
 - Add-Migration "some_migration"
 - Update-Database
+
+Tip: Add the `-Verbose` flag to get more information from the output in `Package Manager`
 
 ## Possible errors you may encounter
 
@@ -124,3 +147,14 @@ Could not find any resources appropriate for the specified culture or the neutra
 **FIX**
 
 ![Make sure that the build action for .designer.cs and .resx files are set to 'Embedded resource'. Right click file and choose 'Properties'](https://github.com/sopra-steria-norge/cload-akademiet-course-files/blob/main/images/db-migration-images/build-action-to-embed-resource.png)
+
+## Optional step: Convert the XML-style project to SDK-style project
+1. We suggest you use Visual Studio Upgrade Assistant to convert the .csproj type. ChatGPT / Copilot might also be a valid option, but be aware of potential errors that may arise.
+
+    [WhoOwesWhat.DataProvider_xml_version.csproj](https://github.com/sopra-steria-norge/cload-akademiet-course-files/blob/main/code/db-migration/WhoOwesWhat.DataProvider_xml_version.csproj)
+
+    [WhoOwesWhat.DataProvider_SDK_style.csproj](https://github.com/sopra-steria-norge/cload-akademiet-course-files/blob/main/code/db-migration/WhoOwesWhat.DataProvider_SDK_style.csproj)
+
+    This is done to make it easier for Entity framework to seed the database for your project
+
+- Remember to restore nuget packages and build the solution after converting to SDK style project. Might help to restart Visual Studio also. 
