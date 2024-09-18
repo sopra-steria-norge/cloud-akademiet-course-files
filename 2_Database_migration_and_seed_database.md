@@ -2,6 +2,12 @@
 
 ## Restore nuget packages and run project
 
+Run `dotnet restore` & `dotnet build` in Visual Studio.
+
+Make sure that `WhoOwesWhat.Service.Net8` is `Set as start up project` and run the project with the `https` profile (F5).
+
+On the first run you should get a `System.IO.FileNotFoundException` that refers to the `SqlClient`.
+
 Make sure that this works before continuing.
 
 ## `cd` into the correct folder from your your command line interface (CLI)
