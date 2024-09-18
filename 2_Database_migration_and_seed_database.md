@@ -79,8 +79,8 @@ You should now have the seeded database `WhoOwesWhat` visible in the dropdown me
 
 ![Successfully seeded database](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/db-migration-images/SSMS_successfully_seeded_WhoOwesWhat_database.png)
 
-## Add connection string to `AppSettings.json` in `WhoOwesWhat.Service.Net8`
-
+## End of this workshop
+You will still get an error if you try to run request to the database, since the project `WhoOwesWhat.DataProvider` is a .NET Framework project. So in the next workshop we will migrate from EF 6.5.1 to Entity Framework Core and migrate the data layer to .NET 8.
 
 ## Relevant commands
 
