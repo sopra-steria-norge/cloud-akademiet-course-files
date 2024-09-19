@@ -133,8 +133,7 @@ Go back into SSMS and check that the user you posted was added to the table `Per
   FROM [WhoOwesWhat].[dbo].[Person]`
 
 
-## End of this workshop
-You will still get an error if you try to run request to the database, since the project `WhoOwesWhat.DataProvider` is a .NET Framework project. So in the next workshop we will migrate from EF 6.5.1 to Entity Framework Core and migrate the data layer to .NET 8.
+## Done with this workshop, onto the next! :) 
 
 ## Relevant commands
 
