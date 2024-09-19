@@ -100,8 +100,7 @@ Update DI container:
    
    `builder.Services.AddServices(builder.Configuration.GetConnectionString("DefaultConnection"));`
 
-Update the contructor in the class `WhoOwesWhatContext`:
-Refactor the contructor and add a new default / empty contructor: 
+Update the contructor in the class `WhoOwesWhatContext`, i.e.refactor the contructor and add a new default / empty contructor: 
        
         public WhoOwesWhatContext()
         {
