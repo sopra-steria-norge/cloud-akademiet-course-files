@@ -79,6 +79,45 @@ You should now have the seeded database `WhoOwesWhat` visible in the dropdown me
 
 ![Successfully seeded database](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/db-migration-images/SSMS_successfully_seeded_WhoOwesWhat_database.png)
 
+## Add connection string to `appsettings.json` and WhoOwesWhatContext to the Dependency Injection (DI) container in `WhoOwesWhat.Service.Net8`
+Add the connection string section to `appsettings.json`: 
+
+  `"ConnectionStrings": {
+    "DefaultConnection": "Data Source=.\\SQLEXPRESS;Integrated Security=True;Database=WhoOwesWhat;Connect Timeout=30;Encrypt=False;"
+  }`
+
+Update DI container: 
+1. In the class `ServiceCollectionExtensions` refactor to the line regarding `WhoOwesWhatContext` with:
+   
+`.AddScoped<IWhoOwesWhatContext, WhoOwesWhatContext>(_ =>
+        new WhoOwesWhatContext(connectionString))`
+
+3. Add new input parameter:
+   
+    `public static IServiceCollection AddServices(this IServiceCollection services, string connectionString)`
+
+4. In `Program.cs` refactor to fit the added input parameter:
+   
+   `builder.Services.AddServices(builder.Configuration.GetConnectionString("DefaultConnection"));`
+
+Update the contructor in the class `WhoOwesWhatContext`:
+Refactor the contructor and add a new default / empty contructor: 
+       
+        public WhoOwesWhatContext()
+        {
+                
+        }              
+        
+        public WhoOwesWhatContext(string connectionString)
+            : base(connectionString)
+        {
+            this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.ProxyCreationEnabled = false;
+            this.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<WhoOwesWhatContext, MigrationConfigurations>());
+
+        }
+
 ## End of this workshop
 You will still get an error if you try to run request to the database, since the project `WhoOwesWhat.DataProvider` is a .NET Framework project. So in the next workshop we will migrate from EF 6.5.1 to Entity Framework Core and migrate the data layer to .NET 8.
 
