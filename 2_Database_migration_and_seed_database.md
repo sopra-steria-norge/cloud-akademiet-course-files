@@ -87,7 +87,7 @@ Add the connection string section to `appsettings.json`:
   }`
 
 Update DI container: 
-1. In the class `ServiceCollectionExtensions` refactor to the line regarding `WhoOwesWhatContext` with:
+1. In the class `ServiceCollectionExtensions` refactor the line regarding `WhoOwesWhatContext` with:
    
 `.AddScoped<IWhoOwesWhatContext, WhoOwesWhatContext>(_ =>
         new WhoOwesWhatContext(connectionString))`
@@ -117,6 +117,21 @@ Refactor the contructor and add a new default / empty contructor:
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<WhoOwesWhatContext, MigrationConfigurations>());
 
         }
+
+## Verify that you can send a POST request to the new database `WhoOWesWhat`
+Run the service (F5) and try to post a new user via the `POST /User/CreateUser` end point. 
+
+Hopefully you will get a 200 (OK) response!
+
+Go back into SSMS and check that the user you posted was added to the table `Person`. 
+
+`SELECT TOP (1000) [PersonId]
+      ,[PersonGuid]
+      ,[Displayname]
+      ,[Mobile]
+      ,[IsDeleted]
+  FROM [WhoOwesWhat].[dbo].[Person]`
+
 
 ## End of this workshop
 You will still get an error if you try to run request to the database, since the project `WhoOwesWhat.DataProvider` is a .NET Framework project. So in the next workshop we will migrate from EF 6.5.1 to Entity Framework Core and migrate the data layer to .NET 8.
