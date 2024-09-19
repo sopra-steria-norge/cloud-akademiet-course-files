@@ -2,7 +2,7 @@
 
 ## Restore nuget packages and run project
 
-Run Restore & Buuld solution in Visual Studio.
+Run Restore & Build solution in Visual Studio.
 
 Make sure that `WhoOwesWhat.Service.Net8` is `Set as start up project` and run the project with the `https` profile (F5).
 
