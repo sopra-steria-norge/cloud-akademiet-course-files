@@ -21,9 +21,11 @@ key aspects to keep in mind:
 1. In .NET 8 it is recommended to use the `required` parameter on the object properties, rather than using [DataAnnotations].
 2. We'll switch to reference to the primary key instead of using a code defined entity id. See example in the code below where PersonId has been removed and replaced by
 
-`[ForeignKey("PersonId")]
-    public required Person Person { get; set; }`
-    and the virtual property for `Person` have been removed.
+```csharp
+[ForeignKey("PersonId")]
+public required Person Person { get; set; }
+```
+and the virtual property for `Person` have been removed.
  
 ```csharp
 [Table("UserCredential")]
