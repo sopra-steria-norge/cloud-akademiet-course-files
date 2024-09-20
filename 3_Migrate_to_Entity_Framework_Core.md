@@ -273,7 +273,8 @@ Start in the `UserController` and focus on `AuthenticateUser`. Follow code into 
 3. Add Project reference from `WhoOwesWhat.Domain.Net8` to `WhoOwesWhat.Domain.DTO` to use the already defined data transfer objects (DTO's) / classes.
 4. Add folder `UserCredentialEntity` to the class library `WhoOwesWhat.DataProvider.Net8` and add a new class `UserCredentialQuery`.
 5. Copy & paste `GetUserCrential` method code from the old `Dataprovider` project in the class `UserCredentialQuery`.
-6. 3. Add Project reference from `WhoOwesWhat.DataProvider.Net8` to `WhoOwesWhat.Domain.DTO` to use the already defined data transfer objects (DTO's) / classes `UserCredentia`
+6. Add Project reference from `WhoOwesWhat.DataProvider.Net8` to `WhoOwesWhat.Domain.DTO` to use the already defined data transfer objects (DTO's) / classes `UserCredential`.
+7. Inject your new `WhoOwesWhatContext` in your class `UserCredentialQuery`. 
 
 ### Dependency Injection
 Remember to inject new repositories and queries into `Program.cs` in `WhoOwesWhat.Service.Net8`
