@@ -10,6 +10,10 @@ Add the Nuget package `Microsoft.EntityFrameworkCore.SqlServer`
 ## Move entities
 Move the Entity folder from `WhoOwesWhat.DataProvider` over to the newly created `WhoOwesWhat.DataProvider.Net8` project
 
+Run `Sync namespaces` in Visual Studio.
+IMAGE-sync namespaces
+
+
 ## Rewrite entities to .NET 8
 Rewrite the classes in the Entity folder so that they conform to .NET 8 and EF Core libraries.
 ```csharp
@@ -25,6 +29,8 @@ public class UserCredential
     public required Person Person { get; set; }
 }
 ```
+
+
 
 ## Create the DbContext
 Create the .NET 8 `WhoOwesWhatContext` class. Start with the `DbSet`'s. Keep relations to Mapping Attributes in the entities where that is applicable. Add missing relations or more complex relations later when needed.  
