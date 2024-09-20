@@ -1,5 +1,16 @@
 # Migrate to EF Core
 
+## We've already done the following steps in order to be able to time box this workshop within a reasonable time frame: 
+Created a new class library `WhoOwesWhat.Dataprovider.Net8`: 
+- Added project references from this project to `WhoOwesWhat.Domain.DTO`
+- Refactored all entities and added these to the folder `Entities`
+- Added a new folder `PersonEntity` with a new class `PersonQuery.cs` and its associated interface (both in the same folder for simplicity). Also added the method `GetPersonByUsername` to this class
+
+Created a new class libray `WhoOwesWhat.Domain.Net8`
+- Added project references from this project to `WhoOwesWhat.Domain.DTO` and `WhoOwesWhat.DataProvider.Net8`
+- Added the class `HashUtils.cs`
+- Added the class `UserRepository.cs` and its associated interface (both in the same folder for simplicity). Also added the method `AuthenticateUser.cs`
+
 ## Create new DataProvider Project
 Create a new .NET 8 Class Library project and name it `WhoOwesWhat.DataProvider.Net8`
 
