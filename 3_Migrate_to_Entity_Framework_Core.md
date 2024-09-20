@@ -32,7 +32,7 @@ Move the Entity folder from `WhoOwesWhat.DataProvider` over to the newly created
 
 Run `Sync namespaces` in Visual Studio.
 
-!IMAGE-sync namespaces!
+![Sync name spaces](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/ef-core-migration-images/entity_sync_namespaces.png)
 
 
 ## Rewrite entities to .NET 8
