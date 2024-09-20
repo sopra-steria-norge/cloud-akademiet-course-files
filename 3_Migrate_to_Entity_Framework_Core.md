@@ -206,7 +206,38 @@ public class UserCredential
 
 
 ## Create the DbContext
-Create the .NET 8 `WhoOwesWhatContext` class. Start with the `DbSet`'s. Keep relations to Mapping Attributes in the entities where that is applicable. Add missing relations or more complex relations later when needed.  
+Create the .NET 8 `WhoOwesWhatContext` class. Start with the `DbSet`'s. Keep relations to Mapping Attributes in the entities where that is applicable. Add missing relations or more complex relations later when needed. 
+
+1. Create WhoOwesWhatContext.cs in the new .Net8 project and copy & paste the DbSets.
+2. Make sure to add `Payer` and `Consumer` to the `OnModelBuilder` method so that these classes can reference the abstract class (entity) `Transaction`.
+
+Your new Context should look something like this: 
+```csharp
+using Microsoft.EntityFrameworkCore;
+using WhoOwesWhat.DataProvider.Net8.Entities;
+
+namespace WhoOwesWhat.DataProvider.Net8;
+
+public class WhoOwesWhatContext(DbContextOptions<WhoOwesWhatContext> options) : DbContext(options)
+{
+    public DbSet<UserCredential> UserCredentials { get; set; }
+    public DbSet<Person> People { get; set; }
+    public DbSet<Friend> Friends { get; set; }
+    public DbSet<Friendrequest> FriendRequests { get; set; }
+    public DbSet<Error> Errors { get; set; }
+    public DbSet<Post> Posts { get; set; }
+    public DbSet<Group> Groups { get; set; }
+    public DbSet<Transaction> Transactions { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        builder.Entity<Payer>();
+        builder.Entity<Consumer>();
+
+        base.OnModelCreating(builder);
+    }
+}
+```
 
 ## Inject the DbContext
 Inject the newly created .NET 8 DbContext to the `Program.cs` file in `WhoOwesWhat.Service.Net8`
