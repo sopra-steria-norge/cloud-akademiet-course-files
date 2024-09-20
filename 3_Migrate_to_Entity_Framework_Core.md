@@ -26,8 +26,168 @@ key aspects to keep in mind:
 public required Person Person { get; set; }
 ```
 and the virtual property for `Person` have been removed.
- 
+
+Refactored entities:
+
 ```csharp
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace WhoOwesWhat.DataProvider.Net8.Entities;
+
+[Table("Error")]
+public class Error
+{
+    public int ErrorId { get; set; }
+
+    public DateTime Created { get; set; }
+
+    public string? Message { get; set; }
+
+    public string? ErrorJson { get; set; }
+}
+```
+
+```csharp
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace WhoOwesWhat.DataProvider.Net8.Entities;
+
+[Table("Friend")]
+public class Friend
+{
+    public int FriendId { get; set; }
+
+    public bool IsDeleted { get; set; }
+
+    [ForeignKey("Person_PersonId")]
+    public virtual required Person Person { get; set; }
+
+    [ForeignKey("Owner_PersonId")]
+    public virtual required Person Owner { get; set; }
+}
+```
+
+```csharp
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace WhoOwesWhat.DataProvider.Net8.Entities;
+
+[Table("Friendrequest")]
+public class Friendrequest
+{
+    public int FriendrequestId { get; set; }
+
+    [ForeignKey("RequesterPerson_PersonId")]
+    public virtual required Person PersonRequested { get; set; }
+
+    [ForeignKey("PersonRequested_PersonId")]
+    public virtual required Person RequesterPerson { get; set; }
+}
+```
+
+```csharp
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace WhoOwesWhat.DataProvider.Net8.Entities;
+
+[Table("Group")]
+public class Group
+{
+    public int GroupId { get; set; }
+    public Guid GroupGuid { get; set; }
+    public string? Name { get; set; }
+    public bool IsDeleted { get; set; }
+    public DateTime VersionUpdated { get; set; }
+
+
+    public virtual ICollection<Post>? Posts { get; set; }
+
+    public virtual Person? CreatedBy { get; set; }
+}
+```
+
+```csharp
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace WhoOwesWhat.DataProvider.Net8.Entities;
+
+[Table("Person")]
+public class Person
+{
+    public int PersonId { get; set; }
+
+    public required Guid PersonGuid { get; set; }
+
+    public required string Displayname { get; set; }
+
+    public string? Mobile { get; set; }
+    public bool IsDeleted { get; set; }
+}
+```
+
+```csharp
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace WhoOwesWhat.DataProvider.Net8.Entities;
+
+[Table("Post")]
+public class Post
+{ 
+    public int PostId { get; set; }
+
+    public Guid PostGuid { get; set; }
+    public DateTime PurchaseDate { get; set; }
+    public string? Description { get; set; }
+    public string? TotalCost { get; set; }
+    public string? Iso4217CurrencyCode { get; set; }
+    public int Version { get; set; }
+    public DateTime VersionUpdated { get; set; }
+    public bool IsDeleted { get; set; }
+    public string? Comment { get; set; }
+
+    public DateTime LastUpdated { get; set; }
+    public DateTime Created { get; set; }
+
+    public virtual Group? Group { get; set; }
+    public virtual Person? LastUpdatedBy { get; set; }
+    public virtual Person? CreatedBy { get; set; }
+
+    public virtual ICollection<Transaction>? Transactions { get; set; }
+}
+```
+
+```csharp
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace WhoOwesWhat.DataProvider.Net8.Entities;
+
+[Table("Transaction")]
+public abstract class Transaction
+{
+    public int TransactionId { get; set; }
+    public bool IsAmountSetManually { get; set; }
+    public string? Amount { get; set; }
+
+    public virtual Post? Post { get; set; }
+    public virtual Person? Person { get; set; }
+}
+
+public class Payer : Transaction
+{
+}    
+
+public class Consumer : Transaction
+{
+}
+```
+
+
+```csharp
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace WhoOwesWhat.DataProvider.Net8.Entities;
+
 [Table("UserCredential")]
 [PrimaryKey("PersonId")]
 public class UserCredential
