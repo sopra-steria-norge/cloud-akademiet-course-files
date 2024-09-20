@@ -17,7 +17,7 @@ Created a new class libray `WhoOwesWhat.Domain.Net8`:
 Refactored parts of `WhoOwesWhat.Service.Net8`:
 - Added project references from this project to `WhoOwesWhat.Domain.Net8` and `WhoOwesWhat.DataProvider.Net8`
 - Added required services to dependency container via `AddControllers(...)` in `Program.cs`
-- Refactored dependecies for controllers
+- Refactored dependecies for controllers and made the endpoints `Async()`
 
 
 ## Create new DataProvider Project
