@@ -11,7 +11,8 @@ Add the Nuget package `Microsoft.EntityFrameworkCore.SqlServer`
 Move the Entity folder from `WhoOwesWhat.DataProvider` over to the newly created `WhoOwesWhat.DataProvider.Net8` project
 
 Run `Sync namespaces` in Visual Studio.
-IMAGE-sync namespaces
+
+!IMAGE-sync namespaces!
 
 
 ## Rewrite entities to .NET 8
@@ -208,7 +209,7 @@ public class UserCredential
 ## Create the DbContext
 Create the .NET 8 `WhoOwesWhatContext` class. Start with the `DbSet`'s. Keep relations to Mapping Attributes in the entities where that is applicable. Add missing relations or more complex relations later when needed. 
 
-1. Create WhoOwesWhatContext.cs in the new .Net8 project and copy & paste the DbSets.
+1. Create WhoOwesWhatContext.cs in the new .Net8 project and copy & paste the DbSets from the .NET Framework 4.8.1 project.
 2. Make sure to add `Payer` and `Consumer` to the `OnModelBuilder` method so that these classes can reference the abstract class (entity) `Transaction`.
 
 Your new Context should look something like this: 
@@ -238,6 +239,21 @@ public class WhoOwesWhatContext(DbContextOptions<WhoOwesWhatContext> options) : 
     }
 }
 ```
+
+## Install required Nuget-packages for Entity Framework Core and delete the old dependency to Entity Framework 6.5.1 to your project `WhoOwesWhat.Service.Net8`
+
+Install: 
+
+`Microsoft.ENtityFrameworkCore` and `Microsoft.EntityFrameworkCore.SqlServer`
+
+Remove: 
+
+`EntityFramework (6.5.1`
+
+## Add project reference to your new class library `WhoOwesWhat.DataProvider.Net8`
+Make sure your Web API `WhoOwesWhat.Service.Net8` references your new class library.
+
+!IMAGE!
 
 ## Inject the DbContext
 Inject the newly created .NET 8 DbContext to the `Program.cs` file in `WhoOwesWhat.Service.Net8`
