@@ -27,6 +27,8 @@ public required Person Person { get; set; }
 ```
 and the virtual property for `Person` have been removed.
 
+3. Using .NET 8 syntax for namespaces, i.e. removing braces `{}` and replace with `;`.
+
 Refactored entities:
 
 ```csharp
