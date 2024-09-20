@@ -34,6 +34,10 @@ and the virtual property for `Person` have been removed.
 3. Using .NET 8 syntax for namespaces, i.e. removing braces `{}` and replace with `;`.
 
 ## TODO: 2. Finish WhoOwesWhatContext	
+Finish the .NET 8 `WhoOwesWhatContext` class. Start with the `DbSet`'s. Keep relations to mapping Attributes in the entities where that is applicable. Add missing relations or more complex relations later when needed. 
+
+1. Copy & paste the DbSets from the .NET Framework 4.8.1 project.
+2. Make sure that the `Payer` and `Consumer` classes are added to the `OnModelBuilder` method so that these classes can reference the abstract class (entity) `Transaction`. 
 
 ## TODO: 3. Inject DbContext	
 
