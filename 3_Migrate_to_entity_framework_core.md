@@ -1,6 +1,6 @@
 # Migrate to EF Core
 
-## We've already done the following steps in order to be able to time box this workshop within a reasonable time frame: 
+## NB! We've already done the following steps in order to be able to time box this workshop within a reasonable time frame: 
 Created a new class library `WhoOwesWhat.Dataprovider.Net8`: 
 - Added project references from this project to `WhoOwesWhat.Domain.DTO`
 - Refactored all entities and added these to the folder `Entities`
@@ -17,3 +17,15 @@ Refactored parts of `WhoOwesWhat.Service.Net8`:
 - Added project references from this project to `WhoOwesWhat.Domain.Net8` and `WhoOwesWhat.DataProvider.Net8`
 - Added required services to dependency container via `AddControllers(...)` in `Program.cs`
 - Refactored dependecies for controllers and made the endpoints `Async()`
+
+## TODO: 1. Finish UserCredential Entity
+
+## TODO: 2. Finish WhoOwesWhatContext	
+
+## TODO: 3. Inject DbContext	
+
+## TODO: 4. Implement AuthenticateUser	
+
+## TODO: 5. Implement GetUserCredential	
+
+## TODO: 6. Implement GetPersonByUsername 
