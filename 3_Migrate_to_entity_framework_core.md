@@ -58,7 +58,8 @@ builder.Services.AddDbContext<WhoOwesWhatContext>(options =>
 </details>
 
 ## TODO: 4. Implement AuthenticateUser	
-Tip: Get inspiration from the old .NET Framework 4.8.1 project and the method `AuthenticateUser`.
+Tip 1: Get inspiration from the old .NET Framework 4.8.1 project and the method `AuthenticateUser`.
+
 Tip 2: We don't want to use the custom class Guard.cs, instead we want to use built-in ArgumentExceptions. 
 
 <details>
@@ -73,5 +74,22 @@ ArgumentException.ThrowIfNullOrEmpty(variableToCheck)
 </details>
 
 ## TODO: 5. Implement GetUserCredential	
+Tip 1: Get inspiration from the old .NET Framework 4.8.1 project and the method `GetUserCredential`.
+
+Tip 2: Get the entities directly from your new `WhoOwesWhatContext.cs`. Other classes may have some valuable code snippets that can be used with slight modifications.
+
+Tip 3: In order to get the complete entity with references to other entities, use `.Include` (Entity Framework Core syntax).
+
+
+<details>
+  <summary> Code snippet (spoiler!) </summary>
+	
+Use LINQ queries to get data:
+
+```csharp
+var userCredential = await _DbContext.UserCredentials.Include(u => u.Person).SingleOrDefaultAsync(a => a.Username == username);
+```
+
+</details>
 
 ## TODO: 6. Implement GetPersonByUsername 
