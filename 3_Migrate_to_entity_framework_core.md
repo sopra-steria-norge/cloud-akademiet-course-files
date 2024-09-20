@@ -21,7 +21,7 @@ Refactored parts of `WhoOwesWhat.Service.Net8`:
 ## TODO: 1. Finish UserCredential Entity
 Rewrite the class (entity) `UserCredential.cs` in the Entity folder so that they conform to .NET 8 and EF Core libraries.
 
-key aspects to keep in mind: 
+Key aspects to keep in mind: 
 1. In .NET 8 it is recommended to use the `required` parameter on the object properties, rather than using [DataAnnotations].
 2. We'll switch to reference to the primary key instead of using a code defined entity id. See example in the code below where PersonId has been removed and replaced by
 
@@ -33,13 +33,30 @@ and the virtual property for `Person` have been removed.
 
 3. Using .NET 8 syntax for namespaces, i.e. removing braces `{}` and replace with `;`.
 
-## TODO: 2. Finish WhoOwesWhatContext	
-Finish the .NET 8 `WhoOwesWhatContext` class. Start with the `DbSet`'s. Keep relations to mapping Attributes in the entities where that is applicable. Add missing relations or more complex relations later when needed. 
+Tip: look at the other refactored classes and the old version from the .NET Framework 4.8.1 project.
 
-1. Copy & paste the DbSets from the .NET Framework 4.8.1 project.
-2. Make sure that the `Payer` and `Consumer` classes are added to the `OnModelBuilder` method so that these classes can reference the abstract class (entity) `Transaction`. 
+## TODO: 2. Finish WhoOwesWhatContext	
+Finish the .NET 8 `WhoOwesWhatContext` class. Start with the `DbSet`'s. We want to keep the relations and mapping attributes in the entities where this is applicable. Add missing relations or more complex relations later when needed. 
+
+In short: 
+
+1. Copy & paste the `DbSets<...> SomeProperty` from the .NET Framework 4.8.1 project.
+2. Make sure that the `Payer` and `Consumer` classes are added to the `OnModelCreating` method so that these classes can reference the abstract class (entity) `Transaction`. 
 
 ## TODO: 3. Inject DbContext	
+Inject the newly created .NET 8 DbContext to the `Program.cs` file in `WhoOwesWhat.Service.Net8`
+
+Tip: 
+
+<details>
+  <summary> Code snippet (spoiler!) </summary>
+```csharp
+builder.Services.AddDbContext<WhoOwesWhatContext>(options =>
+{
+	options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+```
+</details>
 
 ## TODO: 4. Implement AuthenticateUser	
 
