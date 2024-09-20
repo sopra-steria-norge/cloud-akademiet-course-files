@@ -19,6 +19,19 @@ Refactored parts of `WhoOwesWhat.Service.Net8`:
 - Refactored dependecies for controllers and made the endpoints `Async()`
 
 ## TODO: 1. Finish UserCredential Entity
+Rewrite the class (entity) `UserCredential.cs` in the Entity folder so that they conform to .NET 8 and EF Core libraries.
+
+key aspects to keep in mind: 
+1. In .NET 8 it is recommended to use the `required` parameter on the object properties, rather than using [DataAnnotations].
+2. We'll switch to reference to the primary key instead of using a code defined entity id. See example in the code below where PersonId has been removed and replaced by
+
+```csharp
+[ForeignKey("PersonId")]
+public required Person Person { get; set; }
+```
+and the virtual property for `Person` have been removed.
+
+3. Using .NET 8 syntax for namespaces, i.e. removing braces `{}` and replace with `;`.
 
 ## TODO: 2. Finish WhoOwesWhatContext	
 
