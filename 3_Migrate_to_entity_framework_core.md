@@ -46,8 +46,6 @@ In short:
 ## TODO: 3. Inject DbContext	
 Inject the newly created .NET 8 DbContext to the `Program.cs` file in `WhoOwesWhat.Service.Net8`
 
-Tip: 
-
 <details>
   <summary> Code snippet (spoiler!) </summary>
 	
@@ -60,6 +58,19 @@ builder.Services.AddDbContext<WhoOwesWhatContext>(options =>
 </details>
 
 ## TODO: 4. Implement AuthenticateUser	
+Tip: Get inspiration from the old .NET Framework 4.8.1 project and the method `AuthenticateUser`.
+Tip 2: We don't want to use the custom class Guard.cs, instead we want to use built-in ArgumentExceptions. 
+
+<details>
+  <summary> Code snippet (spoiler!) </summary>
+	
+Replace custom Guard clauses with built in ArgumentException where applicable:
+
+```csharp
+ArgumentException.ThrowIfNullOrEmpty(variableToCheck)
+```
+
+</details>
 
 ## TODO: 5. Implement GetUserCredential	
 
