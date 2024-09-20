@@ -18,6 +18,10 @@ Refactored parts of `WhoOwesWhat.Service.Net8`:
 - Added required services to dependency container via `AddControllers(...)` in `Program.cs`
 - Refactored dependecies for controllers and made the endpoints `Async()`
 
+## Use the built-in `Task list` in Visual Studio to locate the TODO's in your solution
+
+![Task list](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/ef-core-migration-images/task-list.png)
+
 ## TODO: 1. Finish UserCredential Entity
 Rewrite the class (entity) `UserCredential.cs` in the Entity folder so that they conform to .NET 8 and EF Core libraries.
 
@@ -74,7 +78,7 @@ ArgumentException.ThrowIfNullOrEmpty(variableToCheck)
 </details>
 
 ## TODO: 5. Implement GetUserCredential	
-Tip 1: Get inspiration from the old .NET Framework 4.8.1 project and the method `GetUserCredential`.
+Tip 1: Get inspiration from the old .NET Framework 4.8.1 project and the method `GetUserCredential` and refactor.
 
 Tip 2: Get the entities directly from your new `WhoOwesWhatContext.cs`. Other classes may have some valuable code snippets that can be used with slight modifications.
 
@@ -93,3 +97,23 @@ var userCredential = await _DbContext.UserCredentials.Include(u => u.Person).Sin
 </details>
 
 ## TODO: 6. Implement GetPersonByUsername 
+Tip 1: Get inspiration from the old .NET Framework 4.8.1 project and the method `GetPersonByUsername` and refactor.
+
+Tip 2: Get the entities directly from your new `WhoOwesWhatContext.cs`. Other classes may have some valuable code snippets that can be used with slight modifications.
+
+Tip 3: In order to get the complete entity with references to other entities, use `.Include` (Entity Framework Core syntax).
+
+
+<details>
+  <summary> Code snippet (spoiler!) </summary>
+	
+Use LINQ queries to get data:
+
+```csharp
+var credential = await _DbContext.UserCredentials
+                                        .Include(u => u.Person)
+                                        .SingleOrDefaultAsync(a => a.Username == username);
+```
+
+</details>
+
