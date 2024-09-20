@@ -206,7 +206,7 @@ public class UserCredential
 
 
 
-## Create the DbContext
+## Create a new DbContext for your .NET 8 class library
 Create the .NET 8 `WhoOwesWhatContext` class. Start with the `DbSet`'s. Keep relations to Mapping Attributes in the entities where that is applicable. Add missing relations or more complex relations later when needed. 
 
 1. Create WhoOwesWhatContext.cs in the new .Net8 project and copy & paste the DbSets from the .NET Framework 4.8.1 project.
@@ -251,7 +251,7 @@ Remove:
 `EntityFramework (6.5.1`
 
 ## Add project reference to your new class library `WhoOwesWhat.DataProvider.Net8`
-Make sure your Web API `WhoOwesWhat.Service.Net8` references your new class library.
+Make sure your Web API `WhoOwesWhat.Service.Net8` references your new class library. You can now `Unload` the old class library `WhoOwesWhat.DataProvider`.
 
 !IMAGE!
 
@@ -267,6 +267,13 @@ builder.Services.AddDbContext<WhoOwesWhatContext>(options =>
 
 ## Rewrite code to .NET 8
 Start in the `UserController` and focus on `AuthenticateUser`. Follow code into repositories, queries and commands and rewrite. Create new class library projects where necessary. 
+
+1. Create new class library `WhoOwesWhat.Domain.Net8`.
+2. Copy & paste `AuthenticateUser` method code from the old `Domain` project in the class `UserRepository`.
+3. Add Project reference from `WhoOwesWhat.Domain.Net8` to `WhoOwesWhat.Domain.DTO` to use the already defined data transfer objects (DTO's) / classes.
+4. Add folder `UserCredentialEntity` to the class library `WhoOwesWhat.DataProvider.Net8` and add a new class `UserCredentialQuery`.
+5. Copy & paste `GetUserCrential` method code from the old `Dataprovider` project in the class `UserCredentialQuery`.
+6. 3. Add Project reference from `WhoOwesWhat.DataProvider.Net8` to `WhoOwesWhat.Domain.DTO` to use the already defined data transfer objects (DTO's) / classes `UserCredentia`
 
 ### Dependency Injection
 Remember to inject new repositories and queries into `Program.cs` in `WhoOwesWhat.Service.Net8`
