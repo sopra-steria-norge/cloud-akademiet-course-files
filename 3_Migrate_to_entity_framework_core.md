@@ -50,6 +50,7 @@ Tip:
 
 <details>
   <summary> Code snippet (spoiler!) </summary>
+	
 ```csharp
 builder.Services.AddDbContext<WhoOwesWhatContext>(options =>
 {
