@@ -1,5 +1,8 @@
 # Migrate to EF Core
 
+## Starting branch
+[ef-core-quickstart](https://github.com/sopra-steria-norge/WhoOwesWhat-Net48/tree/ef-core-quickstart)
+
 ## NB! We've already done the following steps in order to be able to time box this workshop within a reasonable time frame: 
 Created a new class library `WhoOwesWhat.Dataprovider.Net8`: 
 - Added project references from this project to `WhoOwesWhat.Domain.DTO`
