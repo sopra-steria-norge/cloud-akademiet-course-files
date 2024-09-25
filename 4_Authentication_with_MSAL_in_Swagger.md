@@ -1,5 +1,9 @@
 # Add authentication to your API (using Microsoft Authentication Library in Swagger) - HOW TO
 
+## Starting branch
+[ef-core](https://github.com/sopra-steria-norge/WhoOwesWhat-Net48/tree/ef-core)
+
+
 What we are going to do in this part of the course:
 - Add middleware in Program.cs (using Swashbuckle and config to set up Swagger)
 - Add configuration & variables for identity in appsettings.json
