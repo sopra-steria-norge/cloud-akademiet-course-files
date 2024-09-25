@@ -1,5 +1,8 @@
 # Migrate to native .NET Core Dependency Injection - HOW TO
 
+### Starting branch
+[main-net48](https://github.com/sopra-steria-norge/WhoOwesWhat-Net48/tree/main-net48)
+
 ### Create new project for .NET 8 (ASP.NET Core Web API)
 
 ![ASP.NET Core Web API](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/dependency-injection-images/ASP.NETCoreWebAPI.png)
