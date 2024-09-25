@@ -5,6 +5,8 @@
 
 ### Create new project for .NET 8 (ASP.NET Core Web API)
 
+Name the project `WhoOwesWhat.Service.Net8`.
+
 ![ASP.NET Core Web API](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/dependency-injection-images/ASP.NETCoreWebAPI.png)
 ![ASP.NET Core Web API Configuration](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/dependency-injection-images/ASP.NETCoreWebAPI_configuration.png)
 
