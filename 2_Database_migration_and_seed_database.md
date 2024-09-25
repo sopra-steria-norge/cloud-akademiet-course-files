@@ -1,5 +1,8 @@
 # Add migration, update to Entity Framework 6 and seed a new WhoOwesWhat database - HOW TO
 
+## Starting branch
+[dependency-injection](https://github.com/sopra-steria-norge/WhoOwesWhat-Net48/tree/dependency-injection)
+
 ## Restore nuget packages and run project
 
 Run Restore & Build solution in Visual Studio.
