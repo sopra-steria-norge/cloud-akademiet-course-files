@@ -10,7 +10,7 @@ What we are going to do in this part of the course:
 - Decoration on controllers using the `[Authorize]` filter
 - Application registration in Azure (we have already created this --> URL)
 
-## Before we start doing changes, make sure that your WhoOwesWhat solution is built successfully and that the API returns 200 (OK)
+## TEST: Before we start doing changes, make sure that your WhoOwesWhat solution is built successfully and that the API returns 200 (OK)
 - Build solution (F6) and launch app (F5)
 - Try the endpoint `POST User/CreateUser` with some mock data of your choosing, should get a 200 (OK) response (since we're currently using an unprotected API)
 - Make sure the `personGuid` is unique in the CreateUser request
@@ -19,9 +19,7 @@ What we are going to do in this part of the course:
 
 ## Add the neccessary NuGet packages to your project
 - Add Nuget packages with `CLI`, `Package Manager` or right-click on solution and select `Manage NuGet Packages for Solution...`
-- Required packages:
--- `Swashbuckle.AspNetCore` (probably in your project already, install required only if not already there)
--- `Microsoft.Identity.Web`
+- Required packages: `Swashbuckle.AspNetCore` (probably in your project already, install required only if not already there) & `Microsoft.Identity.Web`
 
 ![Swashbuckle.AspNetCore](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/auth-images/install_nuget_Swashbuckle.AspNetCore.png)
 
@@ -30,18 +28,24 @@ What we are going to do in this part of the course:
 ## Use the built-in `Task list` in Visual Studio to locate the TODO's in your solution
 ![Task list](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/ef-core-migration-images/task-list.png)
 
-## TODO: 1. Finish UserCredential Entity
-
-##  Steps
-
+## TODO: 1. Add section AzureAd to `appsettings.json`
 - Add section AzureAd to `appsettings.json` and populate based on the identity we've already created --> url to app reg.
-- Add authentication middleware (`builder.Services.AddMicrosoftIdentityWebApiAuthentication(builder.Configuration);` `app.UseAuthentication();`)
-- Add decorators to controllers using the `[Authorize]` filter
-- Launch app try Sync endpoint again (should get 401 Unauthorized, the API is now protected by authentication)
-- Configure Swagger UI to use interactive authentication (use builder to register Service, get values from AzureAd section in appsettings and make the app use SwaggerUI with OAuth)
-- Launch application and authenticate using the padlock button - should now be able to log in
-- Try Sync endpoint - should now work (200OK) since you're able to get a bearer token and authenticate
 
+## TODO: 2. Add authentication middleware
+- Add authentication middleware (`builder.Services.AddMicrosoftIdentityWebApiAuthentication(builder.Configuration);` `app.UseAuthentication();`)
+
+ ## TODO: 3. Add decorators to controllers using the `[Authorize]` filter
+- Add decorators to controllers using the `[Authorize]` filter
+
+## TEST: Test the application as you did in the first step in this workshop
+- Launch app try the endpoint `POST User/CreateUser` again (should now get a 401 (Unauthorized) response, i.e. the API is now protected by authentication)
+
+ ## TODO: 4. Configure Swagger UI to use interactive authentication
+- Configure Swagger UI to use interactive authentication (use builder to register Service, get values from AzureAd section in appsettings and make the app use SwaggerUI with OAuth)
+
+## TEST: Authenticate via the padlock button in Swagger (top right)
+- Launch application and authenticate using the padlock button - should now be able to log in
+- Try the endpoint `POST User/CreateUser` again - should now work and give a 200 (OK) response, since you're able to get a bearer token and authenticate.
 
 ## Sources used in the course / best practice with regards to the topic Web API Authentication using MSAL in .NET
 
