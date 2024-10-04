@@ -13,20 +13,27 @@ What we are going to do in this part of the course:
 ## Before we start doing changes, make sure that your WhoOwesWhat solution is built successfully and that the API returns 200 (OK)
 - Build solution (F6) and launch app (F5)
 - Try the endpoint `POST User/CreateUser` with some mock data of your choosing, should get a 200 (OK) response (since we're currently using an unprotected API)
-- Make sure the `person-guid` is unique in the CreateUser request
+- Make sure the `personGuid` is unique in the CreateUser request
 
 ![200 response](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/auth-images/200_ok_response_CreateUser.png)
 
-## Use the built-in `Task list` in Visual Studio to locate the TODO's in your solution
+## Add the neccessary NuGet packages to your project
+- Add Nuget packages with `CLI`, `Package Manager` or right-click on solution and select `Manage NuGet Packages for Solution...`
+- Required packages:
+-- `Swashbuckle.AspNetCore` (probably in your project already, install required only if not already there)
+-- `Microsoft.Identity.Web`
 
+![Swashbuckle.AspNetCore](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/auth-images/install_nuget_Swashbuckle.AspNetCore.png)
+
+![Microsoft.Identity.Web](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/auth-images/install_nuget_Microsoft.Identity.Web.png)
+
+## Use the built-in `Task list` in Visual Studio to locate the TODO's in your solution
 ![Task list](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/ef-core-migration-images/task-list.png)
 
 ## TODO: 1. Finish UserCredential Entity
 
 ##  Steps
-- Build solution and launch app
-- Try Sync endpoint, should get 200 OK (since we're using an unprotected API)
-- Add Nuget packages with `CLI` or `Package Manager` (Swashbuckle.AspNetCore (probably in your project already), Microsoft.Identity.Web)
+
 - Add section AzureAd to `appsettings.json` and populate based on the identity we've already created --> url to app reg.
 - Add authentication middleware (`builder.Services.AddMicrosoftIdentityWebApiAuthentication(builder.Configuration);` `app.UseAuthentication();`)
 - Add decorators to controllers using the `[Authorize]` filter
