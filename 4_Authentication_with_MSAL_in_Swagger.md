@@ -10,10 +10,21 @@ What we are going to do in this part of the course:
 - Decoration on controllers using the `[Authorize]` filter
 - Application registration in Azure (we have already created this --> URL)
 
+## Before we start doing changes, make sure that your WhoOwesWhat solution is built successfully and that the API returns 200 (OK)
+- Build solution (F6) and launch app (F5)
+- Try the endpoint `POST User/CreateUser` with some mock data of your choosing, should get a 200 (OK) response (since we're currently using an unprotected API)
+- Make sure the `person-guid` is unique in the CreateUser request
+
+![200 response](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/auth-images/200_ok_response_CreateUser.png)
+
+## Use the built-in `Task list` in Visual Studio to locate the TODO's in your solution
+
+![Task list](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/ef-core-migration-images/task-list.png)
+
+## TODO: 1. Finish UserCredential Entity
 
 ##  Steps
-- Open branch ef-core
-- Launch app
+- Build solution and launch app
 - Try Sync endpoint, should get 200 OK (since we're using an unprotected API)
 - Add Nuget packages with `CLI` or `Package Manager` (Swashbuckle.AspNetCore (probably in your project already), Microsoft.Identity.Web)
 - Add section AzureAd to `appsettings.json` and populate based on the identity we've already created --> url to app reg.
