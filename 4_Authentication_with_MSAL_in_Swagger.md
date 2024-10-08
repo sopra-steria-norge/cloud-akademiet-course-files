@@ -31,6 +31,21 @@ What we are going to do in this part of the course:
 ## TODO: 1. Add section AzureAd to `appsettings.json`
 - Add section AzureAd to `appsettings.json` and populate based on the identity we've already created --> url to app reg.
 
+Enter the relevant application registration in the Azure Portal (Sopra Steria tenant). And copy the relevant attributes.
+![App reg. with highligthed attributes]()
+
+<details>
+  <summary> Code snippet (spoiler!) </summary>
+	
+```csharp
+"AzureAd":{
+ "Instance": "https://login.microsoftonline.com/",
+ "ClientId": "",
+ "TenantId": ""
+}
+```
+</details>
+
 ## TODO: 2. Add authentication middleware
 - Add authentication middleware (`builder.Services.AddMicrosoftIdentityWebApiAuthentication(builder.Configuration);` `app.UseAuthentication();`)
 
