@@ -32,7 +32,7 @@ What we are going to do in this part of the course:
 - Add section AzureAd to `appsettings.json` and populate based on the identity we've already created --> [URL to application registration](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/~/Overview/appId/a6e91cd7-badc-4ce3-8311-bf5d0ed39f3c/defaultBlade/Branding)
 
 Enter the relevant application registration in the Azure Portal (Sopra Steria tenant). And copy the relevant attributes.
-!(App reg. with highligthed attributes)[https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/auth-images/app_reg_whooweswhat.png]
+![App reg. with highligthed attributes](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/auth-images/app_reg_whooweswhat.png)
 
 <details>
   <summary> Code snippet (spoiler!) </summary>
