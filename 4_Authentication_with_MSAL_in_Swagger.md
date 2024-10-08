@@ -41,6 +41,7 @@ Enter the relevant application registration in the Azure Portal (Sopra Steria te
 "AzureAd":{
  "Instance": "https://login.microsoftonline.com/",
  "ClientId": "",
+ "Audience": "", // Same as ClientId in this case
  "TenantId": ""
 }
 ```
