@@ -125,9 +125,9 @@ builder.Services.AddSwaggerGen(options =>
                 AuthorizationUrl = new Uri($"{msalBaseUrl}/authorize"),
                 TokenUrl = new Uri($"{msalBaseUrl}/token"),
                 Scopes = new Dictionary<string, string>
-        {
-            { $"{clientId}/user_impersonation", "Access application on user behalf" }
-        }
+	        {
+	            { $"{clientId}/user_impersonation", "Access application on user behalf" }
+	        }
             }
         }
     });
@@ -155,6 +155,7 @@ if (app.Environment.IsDevelopment())
 ## TEST: Authenticate via the padlock button in Swagger (top right)
 - Launch application and authenticate using the padlock button - should now be able to log in
 - Try the endpoint `POST User/CreateUser` again - should now work and give a 200 (OK) response, since you're able to get a bearer token and authenticate.
+- Inspect the bearer token aquired from the application registration using the website [jwt.io](https://jwt.io/)
 
 ## Sources used in the course / best practice with regards to the topic Web API Authentication using MSAL in .NET
 
