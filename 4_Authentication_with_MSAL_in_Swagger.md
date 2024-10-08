@@ -80,10 +80,10 @@ In FriendrequestController.cs and UserController.cs add authorization filters on
   <summary> Code snippet to get AzureAd configuration (spoiler!) </summary>
 
 ```csharp
-        var azureAdSection = builder.Configuration.GetSection("AzureAd");
-        var tenantId = azureAdSection.GetValue<string>("TenantId");
-        var instance = azureAdSection.GetValue<string>("Instance");
-        var clientId = azureAdSection.GetValue<string>("ClientId");
+var azureAdSection = builder.Configuration.GetSection("AzureAd");
+var tenantId = azureAdSection.GetValue<string>("TenantId");
+var instance = azureAdSection.GetValue<string>("Instance");
+var clientId = azureAdSection.GetValue<string>("ClientId");
 ```
 </details>
 
@@ -138,16 +138,16 @@ builder.Services.AddSwaggerGen(options =>
   <summary> Code snippet to configure Swagger UI with relevant options (spoiler!) </summary>
 	
 ```csharp
-        if (app.Environment.IsDevelopment())
-        {
-            app.UseSwagger();
-            app.UseSwaggerUI(options =>
-            {
-                options.OAuthAppName("WhoOwesWhat");
-                options.OAuthClientId(clientId);
-                options.OAuthUseBasicAuthenticationWithAccessCodeGrant();
-            });
-        }
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(options =>
+    {
+	options.OAuthAppName("WhoOwesWhat");
+	options.OAuthClientId(clientId);
+	options.OAuthUseBasicAuthenticationWithAccessCodeGrant();
+    });
+}
 ```
 </details>
 
