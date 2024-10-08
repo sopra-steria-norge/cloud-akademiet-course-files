@@ -40,7 +40,7 @@ Enter the relevant application registration in the Azure Portal (Sopra Steria te
 ```csharp
 "AzureAd":{
  "Instance": "https://login.microsoftonline.com/",
- "ClientId": "",
+ "ClientId": "", // Use the Application ID URI
  "Audience": "", // Same as ClientId in this case
  "TenantId": ""
 }
@@ -126,7 +126,7 @@ builder.Services.AddSwaggerGen(options =>
                 TokenUrl = new Uri($"{msalBaseUrl}/token"),
                 Scopes = new Dictionary<string, string>
         {
-            { $"api://{clientId}/user_impersonation", "Access application on user behalf" }
+            { $"{clientId}/user_impersonation", "Access application on user behalf" }
         }
             }
         }
