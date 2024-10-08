@@ -47,8 +47,6 @@ Enter the relevant application registration in the Azure Portal (Sopra Steria te
 </details>
 
 ## TODO: 2. Add authentication middleware and enable authentication for your application
-- Add authentication middleware (`builder.Services.AddMicrosoftIdentityWebApiAuthentication(builder.Configuration);` `app.UseAuthentication();`)
-
 <details>
   <summary> Code snippet (spoiler!) </summary>
 
@@ -60,14 +58,98 @@ app.UseAuthentication();
 ```
 </details>
 
- ## TODO: 3. Add decorators to controllers using the `[Authorize]` filter
-- Add decorators to controllers using the `[Authorize]` filter
+ ## TODO: 3. Add decorators to controllers using
+<details>
+  <summary> Code snippet (spoiler!) </summary>
+
+In FriendrequestController.cs and UserController.cs add authorization filters on the top of each controller to protect all endpoints.
+```csharp
+[Authorize]
+```
+</details>
 
 ## TEST: Test the application as you did in the first step in this workshop
-- Launch app try the endpoint `POST User/CreateUser` again (should now get a 401 (Unauthorized) response, i.e. the API is now protected by authentication)
+- Launch your app try the endpoint `POST User/CreateUser` in Swagger again (should now get a 401 (Unauthorized) response, i.e. the API is now protected by authentication)
 
  ## TODO: 4. Configure Swagger UI to use interactive authentication
-- Configure Swagger UI to use interactive authentication (use builder to register Service, get values from AzureAd section in appsettings and make the app use SwaggerUI with OAuth)
+ 1. Get the relevant environment variables from AzureAd section in appsettings.json
+ 2. Use builder to register Service, and make the app use SwaggerUI with OAuth. In addition set the relevant options for our authentication flow
+ 3. Configure the HTTP request pipeline and update with relevant options
+
+<details>
+  <summary> Code snippet to get AzureAd configuration (spoiler!) </summary>
+
+```csharp
+        var azureAdSection = builder.Configuration.GetSection("AzureAd");
+        var tenantId = azureAdSection.GetValue<string>("TenantId");
+        var instance = azureAdSection.GetValue<string>("Instance");
+        var clientId = azureAdSection.GetValue<string>("ClientId");
+```
+</details>
+
+<details>
+  <summary> Code snippet to add Swagger service with correct options (spoiler!) </summary>
+
+```csharp
+builder.Services.AddSwaggerGen(options =>
+{
+    // Add this to avoid errors in the Swagger UI
+    // https://github.com/swagger-api/swagger-ui/issues/7911
+    options.CustomSchemaIds(s => s.FullName?.Replace("+", "."));
+
+    // Enabled OAuth security in Swagger
+    var msalBaseUrl = $"{instance}/{tenantId}/oauth2/v2.0";
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement() 
+    {
+        {
+            new OpenApiSecurityScheme {
+                Reference = new OpenApiReference {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "oauth2"
+                },
+                Scheme = "oauth2",
+                Name = "oauth2",
+                In = ParameterLocation.Header
+            },
+            new List <string> ()
+        }
+    });
+    options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+    {
+        Type = SecuritySchemeType.OAuth2,
+        Flows = new OpenApiOAuthFlows
+        {
+            Implicit = new OpenApiOAuthFlow()
+            {
+                AuthorizationUrl = new Uri($"{msalBaseUrl}/authorize"),
+                TokenUrl = new Uri($"{msalBaseUrl}/token"),
+                Scopes = new Dictionary<string, string>
+        {
+            { $"api://{clientId}/user_impersonation", "Access application on user behalf" }
+        }
+            }
+        }
+    });
+});
+```
+</details>
+
+<details>
+  <summary> Code snippet to configure Swagger UI with relevant options (spoiler!) </summary>
+	
+```csharp
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
+            {
+                options.OAuthAppName("WhoOwesWhat");
+                options.OAuthClientId(clientId);
+                options.OAuthUseBasicAuthenticationWithAccessCodeGrant();
+            });
+        }
+```
+</details>
 
 ## TEST: Authenticate via the padlock button in Swagger (top right)
 - Launch application and authenticate using the padlock button - should now be able to log in
