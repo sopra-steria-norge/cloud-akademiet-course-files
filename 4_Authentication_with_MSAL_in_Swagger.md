@@ -8,7 +8,7 @@ What we are going to do in this part of the course:
 - Add middleware in Program.cs (using Swashbuckle and config to set up Swagger)
 - Add configuration & variables for identity in appsettings.json
 - Decoration on controllers using the `[Authorize]` filter
-- Application registration in Azure (we have already created this --> URL)
+- Application registration in Azure (we have already created this --> [Application registration](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/~/Overview/appId/a6e91cd7-badc-4ce3-8311-bf5d0ed39f3c/defaultBlade/Branding))
 
 ## TEST: Before we start doing changes, make sure that your WhoOwesWhat solution is built successfully and that the API returns 200 (OK)
 - Build solution (F6) and launch app (F5)
@@ -29,7 +29,7 @@ What we are going to do in this part of the course:
 ![Task list](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/ef-core-migration-images/task-list.png)
 
 ## TODO: 1. Add section AzureAd to `appsettings.json`
-- Add section AzureAd to `appsettings.json` and populate based on the identity we've already created --> [URL to application registration](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/~/Overview/appId/a6e91cd7-badc-4ce3-8311-bf5d0ed39f3c/defaultBlade/Branding)
+- Add section AzureAd to `appsettings.json` and populate based on the identity we've already created --> [Application registration](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/~/Overview/appId/a6e91cd7-badc-4ce3-8311-bf5d0ed39f3c/defaultBlade/Branding)
 
 Enter the relevant application registration in the Azure Portal (Sopra Steria tenant). And copy the relevant attributes.
 ![App reg. with highligthed attributes](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/auth-images/app_reg_whooweswhat.png)
