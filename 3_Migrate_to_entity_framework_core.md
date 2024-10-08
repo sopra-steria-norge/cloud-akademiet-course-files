@@ -1,4 +1,4 @@
-# Migrate to EF Core
+# Migrate to EF Core - HOW TO
 
 ## Starting branch
 [ef-core-quickstart](https://github.com/sopra-steria-norge/WhoOwesWhat-Net48/tree/ef-core-quickstart)
