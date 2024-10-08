@@ -46,8 +46,19 @@ Enter the relevant application registration in the Azure Portal (Sopra Steria te
 ```
 </details>
 
-## TODO: 2. Add authentication middleware
+## TODO: 2. Add authentication middleware and enable authentication for your application
 - Add authentication middleware (`builder.Services.AddMicrosoftIdentityWebApiAuthentication(builder.Configuration);` `app.UseAuthentication();`)
+
+<details>
+  <summary> Code snippet (spoiler!) </summary>
+
+In Program.cs add the following lines of code.
+```csharp
+builder.Services.AddMicrosoftIdentityWebApiAuthentication(builder.Configuration);
+
+app.UseAuthentication();
+```
+</details>
 
  ## TODO: 3. Add decorators to controllers using the `[Authorize]` filter
 - Add decorators to controllers using the `[Authorize]` filter
