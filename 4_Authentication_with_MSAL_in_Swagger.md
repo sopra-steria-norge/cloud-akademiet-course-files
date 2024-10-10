@@ -59,7 +59,7 @@ app.UseAuthentication();
 ```
 </details>
 
- ## TODO: 3. Add decorators to controllers using
+ ## TODO: 3. Add decorators to controllers
 <details>
   <summary> Code snippet (spoiler!) </summary>
 
