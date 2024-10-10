@@ -1,5 +1,12 @@
 # Restore Database - HOW TO
 
+## Connect to the SQL Server
+Open Microsoft SQL Server Management Studio 2020.
+You will be prompted with a login screen, check `Trust server certificate` and click `Connect`
+
+![Connect server](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/db-backup/server-connect.png)
+
+
 ## New database
 ### Step 1
 After connecting to your database, right click the server and select `New Database...`
