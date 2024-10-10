@@ -7,14 +7,14 @@
 Created a new class library `WhoOwesWhat.Dataprovider.Net8`: 
 - Added project references from this project to `WhoOwesWhat.Domain.DTO`
 - Refactored all entities and added these to the folder `Entities`
-- Added a new folder `PersonEntity` with a new class `PersonQuery.cs` and its associated interface (both in the same folder for simplicity). Also added the method `GetPersonByUsername` to this class
-- Added a new folder `UserCredentialEntity` with a new class `UserCredentialQuery.cs` and its associated interface (both in the same folder for simplicity). Also added the method `GetUserCredential` to this class
+- Added a new folder `PersonEntity` with a new class `PersonQuery.cs` and its associated interface (both in the same folder for simplicity). Also added the shell of the method `GetPersonByUsername` to be implemented by you
+- Added a new folder `UserCredentialEntity` with a new class `UserCredentialQuery.cs` and its associated interface (both in the same folder for simplicity). Also added the shell of the method `GetUserCredential` to be implemented by you
 - Added a new DbContext `WhoOwesWhatContext.cs` with method `OnModelCreating(...)` and basic funtionality that need to be updated in this workshop
 
 Created a new class libray `WhoOwesWhat.Domain.Net8`:
 - Added project references from this project to `WhoOwesWhat.Domain.DTO` and `WhoOwesWhat.DataProvider.Net8`
 - Added the class `HashUtils.cs`
-- Added the class `UserRepository.cs` and its associated interface (both in the same folder for simplicity). Also added the method `AuthenticateUser.cs`
+- Added the class `UserRepository.cs` and its associated interface (both in the same folder for simplicity). Also added the shell of the method `AuthenticateUser.cs` to be implemented by you
 
 Refactored parts of `WhoOwesWhat.Service.Net8`:
 - Added project references from this project to `WhoOwesWhat.Domain.Net8` and `WhoOwesWhat.DataProvider.Net8`
@@ -25,7 +25,11 @@ Refactored parts of `WhoOwesWhat.Service.Net8`:
 
 ![Task list](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/ef-core-migration-images/task-list.png)
 
+Click on an element in the list to navigate to the corresponding TODO comment
+
 ## TODO: 1. Finish UserCredential Entity
+Double click on TODO 1 in the task list.
+
 Rewrite the class (entity) `UserCredential.cs` in the Entity folder so that they conform to .NET 8 and EF Core libraries.
 
 Key aspects to keep in mind: 
@@ -42,7 +46,9 @@ and the virtual property for `Person` have been removed.
 
 Tip: look at the other refactored classes and the old version from the .NET Framework 4.8.1 project.
 
-## TODO: 2. Finish WhoOwesWhatContext	
+## TODO: 2. Finish WhoOwesWhatContext
+Double click on TODO 2 in the task list.
+
 Finish the .NET 8 `WhoOwesWhatContext` class. Start with the `DbSet`'s. We want to keep the relations and mapping attributes in the entities where this is applicable. Add missing relations or more complex relations later when needed. 
 
 In short: 
@@ -51,6 +57,8 @@ In short:
 2. Make sure that the `Payer` and `Consumer` classes are added to the `OnModelCreating` method so that these classes can reference the abstract class (entity) `Transaction`. 
 
 ## TODO: 3. Inject DbContext	
+Double click on TODO 3 in the task list.
+
 Inject the newly created .NET 8 DbContext to the `Program.cs` file in `WhoOwesWhat.Service.Net8`
 
 <details>
@@ -64,7 +72,8 @@ builder.Services.AddDbContext<WhoOwesWhatContext>(options =>
 ```
 </details>
 
-## TODO: 4. Implement AuthenticateUser	
+## TODO: 4. Implement AuthenticateUser
+Double click on TODO 4 in the task list.
 Tip 1: Get inspiration from the old .NET Framework 4.8.1 project and the method `AuthenticateUser`.
 
 Tip 2: We don't want to use the custom class Guard.cs, instead we want to use built-in ArgumentExceptions. 
@@ -80,7 +89,8 @@ ArgumentException.ThrowIfNullOrEmpty(variableToCheck)
 
 </details>
 
-## TODO: 5. Implement GetUserCredential	
+## TODO: 5. Implement GetUserCredential
+Double click on TODO 5 in the task list.
 Tip 1: Get inspiration from the old .NET Framework 4.8.1 project and the method `GetUserCredential` and refactor.
 
 Tip 2: Get the entities directly from your new `WhoOwesWhatContext.cs`. Other classes may have some valuable code snippets that can be used with slight modifications.
@@ -99,7 +109,9 @@ var userCredential = await _DbContext.UserCredentials.Include(u => u.Person).Sin
 
 </details>
 
-## TODO: 6. Implement GetPersonByUsername 
+## TODO: 6. Implement GetPersonByUsername
+Double click on TODO 6 in the task list.
+
 Tip 1: Get inspiration from the old .NET Framework 4.8.1 project and the method `GetPersonByUsername` and refactor.
 
 Tip 2: Get the entities directly from your new `WhoOwesWhatContext.cs`. Other classes may have some valuable code snippets that can be used with slight modifications.
