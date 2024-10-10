@@ -156,6 +156,9 @@ if (app.Environment.IsDevelopment())
 - Launch application and authenticate using the padlock button - should now be able to log in
 - Try the endpoint `POST User/CreateUser` again - should now work and give a 200 (OK) response, since you're able to get a bearer token and authenticate.
 - Inspect the bearer token aquired from the application registration using the website [jwt.io](https://jwt.io/)
+- Example flow (simple):
+
+![MSAL OAuth2.0 flow from an application when authenticating a secure endpoint](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/auth-images/msal_oauth_2.png)
 
 ## Sources used in the course / best practice with regards to the topic Web API Authentication using MSAL in .NET
 
