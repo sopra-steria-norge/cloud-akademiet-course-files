@@ -70,7 +70,7 @@ In FriendrequestController.cs and UserController.cs add authorization filters on
 </details>
 
 ## TEST: Test the application as you did in the first step in this workshop
-- Launch your app try the endpoint `POST User/CreateUser` in Swagger again (should now get a 401 (Unauthorized) response, i.e. the API is now protected by authentication)
+- Launch your app try the endpoint `POST User/CreateUser` in Swagger again (should now get a 401 (Unauthorized) response, i.e. the API is now protected by authentication.
 
  ## TODO: 4. Configure Swagger UI to use interactive authentication
  1. Get the relevant environment variables from AzureAd section in appsettings.json
