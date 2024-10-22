@@ -18,8 +18,8 @@ In Visual Studio we can use built-in funcitonality to generate a Dockerfile that
 Go through the files related to docker compose, the Dockerfile and .bat scripts. 
 
 ## Create MS SQL image and run in a container
-Our script will run this file: [Docker compose YAML for database (with database credentials)](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/database/docker-compose.yml)
-Script to create mssql image and run in container: [docker-compose.up.bat](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/database/docker-compose.up.bat)
+- Our script will run this file: [Docker compose YAML for database (with database credentials)](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/database/docker-compose.yml)
+- Script to create mssql image and run in container: [docker-compose.up.bat](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/database/docker-compose.up.bat)
 
 ## Verify that you can connect to the database from your local environment
 - Enter Microsoft SQL Server Management Studio (SSMS). 
@@ -33,8 +33,8 @@ Script to create mssql image and run in container: [docker-compose.up.bat](https
 ![Login - containerized database](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/run-container-local-dev/login-container-db.png)
 
 ## Create WhoOwesWhat image and run our application in a container
-Our script will run this file: [Docker compose YAML for application WhoOwesWhat](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/docker-compose.yml)
-Script to create mssql image and run in container: [docker-compose.up.bat](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/docker-compose.up.bat)
+- Our script will run this file: [Docker compose YAML for application WhoOwesWhat](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/docker-compose.yml)
+- Script to create mssql image and run in container: [docker-compose.up.bat](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/docker-compose.up.bat)
 
 ## Verify that contiainer runs and enter the Swagger API for WhoOwesWhat
 1. Verify that migrations has been run and that the database for WhoOwesWhat is created
