@@ -38,6 +38,7 @@ Go through the files related to docker compose, the Dockerfile and .bat scripts.
 
 ## Verify that contiainer runs and enter the Swagger API for WhoOwesWhat
 1. Verify that migrations has been run and that the database for WhoOwesWhat is created
+
 **Verify database connection and that database is created:**
 ![Verify database connection and that database is created](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/run-container-local-dev/verify-database-created.png)
 
