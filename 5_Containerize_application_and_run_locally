@@ -1,1 +1,10 @@
-Lorem ipsum
+Pull .net 8 branch
+Move to docker-workshop branch
+Add docker file (docker support...)
+Verify docker file
+Open visual studio code
+Inspect scripts and docker compose files
+Run database --> docker.bat, verify data base container by logging on to database `localhost,1434`
+
+Run whooweswhat container --> .bat, verify that the database has been created and that you can use the endpoints
+
