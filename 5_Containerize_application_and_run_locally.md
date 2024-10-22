@@ -11,7 +11,7 @@ What we are going to do in this part of the course:
 - Run application WhoOwesWhat in its own container and make sure the health endpoints work and that you can execute read & write operations
 
 ## Add Docker support...
-In Visual Studio we can use built-in funcitonality to generate a Dockerfile that fits our project.
+In Visual Studio we can use built-in functionality to generate a Dockerfile that fits our project.
 ![Add Docker support...](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/run-container-local-dev/add-docker-support.png)
 
 ## Inspect scripts and docker compose files
