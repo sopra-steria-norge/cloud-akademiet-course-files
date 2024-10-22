@@ -14,6 +14,12 @@ What we are going to do in this part of the course:
 In Visual Studio we can use built-in funcitonality to generate a Dockerfile that fits our project.
 ![Add Docker support...](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/run-container-local-dev/add-docker-support.png)
 
+## Inspect scripts and docker compose files
+Go through the files related to docker compose, the Dockerfile and .bat scripts. 
+
+## Create MS SQL image and run in a container
+Our script will run this file: [Docker compose YAML for database (with database credentials)](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/database/docker-compose.yml)
+Script to create mssql image and run in container: [docker-compose.up.bat](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/database/docker-compose.up.bat)
 
 ## Verify that you can connect to the database from your local environment
 - Enter Microsoft SQL Server Management Studio (SSMS). 
@@ -26,16 +32,18 @@ In Visual Studio we can use built-in funcitonality to generate a Dockerfile that
 **Login to containerized database via SSMS:**
 ![Login - containerized database](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/run-container-local-dev/login-container-db.png)
 
+## Create WhoOwesWhat image and run our application in a container
+Our script will run this file: [Docker compose YAML for application WhoOwesWhat](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/docker-compose.yml)
+Script to create mssql image and run in container: [docker-compose.up.bat](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/docker-compose.up.bat)
+
+## Verify that contiainer runs and enter the Swagger API for WhoOwesWhat
+1. Verify that migrations has been run and that the database for WhoOwesWhat is created
 **Verify database connection and that database is created:**
 ![Verify database connection and that database is created](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/run-container-local-dev/verify-database-created.png)
 
-Pull .net 8 branch
-Move to docker-workshop branch
-Add docker file (docker support...)
-Verify docker file
-Open visual studio code
-Inspect scripts and docker compose files
-Run database --> docker.bat, verify data base container by logging on to database `localhost,1434`
-
-Run whooweswhat container --> .bat, verify that the database has been created and that you can use the endpoints
+2. Test WhoOwesWhat endpoints:
+- Test health endpoints
+- Create a user
+- Authorize / Get the user you created
+- This URL should work now: [Swagger URL for localhost:5025](http://localhost:5025/swagger/index.html) 
 
