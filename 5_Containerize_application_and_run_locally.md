@@ -10,12 +10,22 @@ What we are going to do in this part of the course:
 - Run MS SQL database in separate container in the same network as the service so that the service and database can communicate
 - Run application WhoOwesWhat in its own container and make sure the health endpoints work and that you can execute read & write operations
 
-
+## Add Docker support...
+In Visual Studio we can use built-in funcitonality to generate a Dockerfile that fits our project.
 ![Add Docker support...](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/run-container-local-dev/add-docker-support.png)
 
+
+## Verify that you can connect to the database from your local environment
+Enter Microsoft SQL Server Management Studio (SSMS). 
+Log into your database that runs in the container you set up. 
+From your local environment the container is seen as localhost, with the port we specified in our docker-compose setup - port `1434`. 
+Use the user and password that we specified in our docker-compose setup files (same as the variables in the connectionstring our containerized application uses.
+
+[Docker compose YAML for database](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/database/docker-compose.yml)
+
+![Login - containerized database](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/run-container-local-dev/login-container-db.png)
+
 ![Verify database connection and that database is connected](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/run-container-local-dev/verify-database-created.png)
-
-
 
 Pull .net 8 branch
 Move to docker-workshop branch
