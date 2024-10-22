@@ -13,6 +13,7 @@ What we are going to do in this part of the course:
 ## Add Docker support...
 In Visual Studio we can use built-in functionality to generate a Dockerfile that fits our project.
 ![Add Docker support...](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/run-container-local-dev/add-docker-support.png)
+![Dockerfile in root folder](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/run-container-local-dev/docker-support-on-root-folder.png)
 
 ## Inspect scripts and docker compose files
 Go through the files related to docker compose, the Dockerfile and .bat scripts. 
