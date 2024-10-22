@@ -20,12 +20,14 @@ In Visual Studio we can use built-in funcitonality to generate a Dockerfile that
 - Log into your database that runs in the container you set up. 
 - From your local environment the container is seen as localhost, with the port we specified in our docker-compose setup - port `1434`. 
 - Use the user and password that we specified in our docker-compose setup files (same as the variables in the connectionstring our containerized application uses).
-
 [Docker compose YAML for database (with database credentials)](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/database/docker-compose.yml)
+- The WhoOwesWhat database wil not exist yet, since the application needs to run, seed database and apply migrations to create the database. We will come to this later. The most important thing in this section is verifying that you can connect to the database. 
 
+**Login to containerized database via SSMS:**
 ![Login - containerized database](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/run-container-local-dev/login-container-db.png)
 
-![Verify database connection and that database is connected](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/run-container-local-dev/verify-database-created.png)
+**Verify database connection and that database is created:**
+![Verify database connection and that database is created](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/run-container-local-dev/verify-database-created.png)
 
 Pull .net 8 branch
 Move to docker-workshop branch
