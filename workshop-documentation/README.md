@@ -1,8 +1,13 @@
 # Cloud Akademiet Workshop Documentation
 
+## Getting Started
+
+**New Participants**: Start here → [Introduction to the Workshop](./Introduction.md)
+
 ## Table of Contents
 
 ### Workshop Structure
+- [Introduction](./Introduction.md) - What to expect and how to get started
 - [Workshop Overview](./Workshop-Overview.md) - Comprehensive overview of the entire workshop structure and process
 - [Technical Architecture](./Technical-Architecture.md) - Architecture diagrams and technical transformation details
 
