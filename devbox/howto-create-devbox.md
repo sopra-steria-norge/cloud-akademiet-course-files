@@ -1,11 +1,6 @@
 # Cloud Akademiet - Dev Box
 
-
-As a cost-saving measurement a forced hibernation is run on a schedule.
-
-## End User Usage
-
-This section is inteded for those who are provided access to provision their own Dev Boxes for development.
+Obs: As a cost-saving measurement a forced hibernation is run on a schedule.
 
 ### Create a new Dev Box
 
