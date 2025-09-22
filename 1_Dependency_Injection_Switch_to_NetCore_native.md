@@ -13,7 +13,7 @@ Name the project `WhoOwesWhat.Service.Net8`.
 Remove the auto-generated files related to WeatherController. 
 
 ### Move Controllers
-Move `UserController.cs` from the `WhoOwesWhat.Service.Controller` project to the `Controllers` folder in the `WhoOwesWhat.Service.Net8` project. Due to time constraints, we will focus on just this controller.
+Move `UserController.cs` from the `WhoOwesWhat.Service.Controller` project to the `Controllers` folder in the `WhoOwesWhat.Service.Net8` project. Due to time constraints, we will focus on just this controller. PS: Copy the file `UserController.cs` to make sure that the old .NET Framework solution can be run. We'll fix the rest in the next workshops. 
 
 ### Add Necessary Dependencies
 Add all the required project dependencies to ensure the controllers can run in the new project. Check the using statements at the top of `UserController.cs` to see what projects are needed.
