@@ -153,3 +153,9 @@ builder.Services.AddSwaggerGen(options =>
 
 ### Run the project
 Set the new .NET 8 Service project as the startup project and run it. If it does not take you to the Swagger web page, add `/swagger` to the url. Try to call one of the endpoints in `UserController`, you should get a `SqlError`.
+
+
+### Known obstacles
+
+You might run into a problem where the .NET 8 `app.MapControllers` tries to access the old `[Route(...)]` annotations in WhoOwesWhat.Service.DTO --> ServiceDTOs.cs. 
+![SeviceStack.Interfaces]([https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/dependency-injection-images/sync-namespaces.png](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/dependency-injection-images/ServiceStack.Interfaces_error.png) 
