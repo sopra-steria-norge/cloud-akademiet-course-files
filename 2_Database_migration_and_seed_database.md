@@ -13,7 +13,7 @@ On the first run you should get a `System.IO.FileNotFoundException` that refers 
 
 ![EF Core not working from CLI for the project](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/db-migration-images/System.IO.FileNotFoundException_on_first_run.png)
 
-Make sure that this works before continuing.
+Make sure that this is happening before continuing. PS: You might have to trigger an endpoint to make this happen.
 
 ## `cd` into the correct folder from your your command line interface (CLI) in Visual Studio
 
