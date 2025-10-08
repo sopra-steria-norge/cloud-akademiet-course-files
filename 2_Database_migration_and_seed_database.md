@@ -5,7 +5,7 @@
 
 ## Restore nuget packages and run project
 
-Run Restore & Build solution in Visual Studio.
+- Run Restore & Build solution in Visual Studio.
 
 Make sure that `WhoOwesWhat.Service.Net8` is `Set as start up project` and run the project with the `https` profile (F5).
 
@@ -17,29 +17,35 @@ Click this >> https://github.com/sopra-steria-norge/cloud-akademiet-course-files
 
 Else; move on...
 
+- Click on any endpoint in Swagger to get the next error:
 
 On the first run you should get a `System.IO.FileNotFoundException` that refers to the `SqlClient`.
 
 ![EF Core not working from CLI for the project](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/db-migration-images/System.IO.FileNotFoundException_on_first_run.png)
 
-Make sure that this is happening before continuing. PS: You might have to trigger an endpoint to make this happen.
+Make sure that this is happening before continuing
 
 ## `cd` into the correct folder from your your command line interface (CLI) in Visual Studio
 
---> `cd WhoOwesWhat.DataProvider`
+- Open console in Visual Studio:
+
+<img width="653" height="627" alt="image" src="https://github.com/user-attachments/assets/eb56b966-6940-4f3a-ac4f-f8739e043fa4" />
 
 ## Make Entity Framework work
-1. Install dotnet ef as global tool with the following command: `dotnet tool install --global dotnet-ef` in your CLI.
-2. Make sure that a supported version of Entity Framework is used, and that you can use this via your CLI. In this case we have a .NET Framework project, which means that we cannot use Entity Framework Core until we have migrated the service to .NET Core (i.e. .NET 8). Before we reach that point, we will use the latest supported version of **Entity Framework 6**.
+1. Install dotnet ef as global tool
 
-![EF Core not working from CLI for the project](https://github.com/sopra-steria-norge/cload-akademiet-course-files/blob/main/images/db-migration-images/ef-core-does-not-work.png)
+- `cd WhoOwesWhat.DataProvider`
+- Set "Default project to "WhoOwesWhat.DataProvider"
+- Run "dotnet tool install --global dotnet-ef"
 
-3. Install latest supported version of **Entity Framework 6.5.1** for the project WhoOwesWhat.DataProvider
+<img width="718" height="359" alt="image" src="https://github.com/user-attachments/assets/90b863d7-2811-4f74-a69b-a29278a24a2f" />
+
+
+2. Install latest supported version of **Entity Framework 6.5.1** for the project WhoOwesWhat.DataProvider
 ![Manage nuget packages](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/db-migration-images/Update_EntityFrameworkNugetPackage_EF6.5.1.png)
-3. Use **Entity Framework 6** from Package Manager in Visual Studio 2022 with the relevant commands as stated below (using `Package manager` instead of `Powershell` since our project file (.csproj) is not an SDK-style project) 
 
 ## Add connection string directly to the `WhoOwesWhatContext` contructor
-In order to be able to seed the WhoOwesWhat database to your SQL Server the correct connection string must be added. This should look somthing like this: 
+In order to be able to seed the WhoOwesWhat database to your SQL Server the correct connection string must be added. This should look something like this: 
 
         public WhoOwesWhatContext()
             : base("Data Source=.\\SQLEXPRESS;Integrated Security=True;Database=WhoOwesWhat;Connect Timeout=30;Encrypt=False;")
@@ -52,13 +58,12 @@ In order to be able to seed the WhoOwesWhat database to your SQL Server the corr
         }
 
 ## Make sure to enable migrations
+
 Make sure that you have selected the correct project as `Default project` in `Package Manager`. 
 
-Set `Default project` to `WhoOwesWhat.DataProvider`. This must be done in order to make the Entity Framework commands find the DbContext `WhoOwesWhatContext`.
-![Set correct default project](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/db-migration-images/Set_default_project_Package_Manager.png)
-
-Continue in `Package Manager` and run the command:
 - Enable-Migrations
+
+> If you get an error running this command; Run the script "RunEFMigrations.ps1" instead
 
 This should result in the creation of the folder `Migrations` in the `WhoOwesWhat.DataProvider` project.
 
