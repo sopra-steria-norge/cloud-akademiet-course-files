@@ -9,6 +9,15 @@ Run Restore & Build solution in Visual Studio.
 
 Make sure that `WhoOwesWhat.Service.Net8` is `Set as start up project` and run the project with the `https` profile (F5).
 
+If you get this error, you need to setup folder permissions:
+
+<img width="481" height="233" alt="image" src="https://github.com/user-attachments/assets/fafd1212-39bf-4c20-bd66-f558fc6219e8" />
+
+Click this >> https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/Folder_permissions_to_run_projects.md
+
+Else; move on...
+
+
 On the first run you should get a `System.IO.FileNotFoundException` that refers to the `SqlClient`.
 
 ![EF Core not working from CLI for the project](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/db-migration-images/System.IO.FileNotFoundException_on_first_run.png)
