@@ -83,7 +83,9 @@ In order to be able to seed the WhoOwesWhat database to your SQL Server the corr
 
 Make sure that you have selected the correct project as `Default project` in `Package Manager`. 
 
-- Enable-Migrations
+- Enable-Migrations -Verbose
+
+Verbose will show which tooling this command is actually running. The correct one would be "...\WhoOwesWhat-Net48\packages\EntityFramework.6.5.1\tools\...", otherwise, if not try to get help :)
 
 > If you get an error running this command; Run the script "RunEFMigrations.ps1" instead
 
