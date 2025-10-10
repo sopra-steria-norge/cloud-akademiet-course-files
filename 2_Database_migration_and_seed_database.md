@@ -53,9 +53,7 @@ Make sure that this is happening before continuing
 
 # Install dotnet ef as global tool
 
-- `cd` into the correct folder from your your command line interface (CLI) in Visual Studio
-
-- Open console in Visual Studio:
+- Open package manager console in Visual Studio:
 
 <img width="653" height="627" alt="image" src="https://github.com/user-attachments/assets/eb56b966-6940-4f3a-ac4f-f8739e043fa4" />
 
