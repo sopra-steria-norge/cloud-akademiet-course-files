@@ -25,14 +25,39 @@ On the first run you should get a `System.IO.FileNotFoundException` that refers 
 
 Make sure that this is happening before continuing
 
-## `cd` into the correct folder from your your command line interface (CLI) in Visual Studio
+## Updating EntityFramework
+
+1. Install latest supported version of **Entity Framework 6.5.1** for the solution:
+
+<img width="534" height="297" alt="image" src="https://github.com/user-attachments/assets/97655a57-6800-4017-957e-fe4a787363cd" />
+
+&nbsp; 
+
+- Update all 4 projects to use EntityFramework to 6.5.1:
+
+</br>
+<img width="664" height="381" alt="image" src="https://github.com/user-attachments/assets/4a46467a-27fe-444d-9c5f-ba972c249d00" />
+
+&nbsp;
+
+2. Go to "packages" folder on root folder and delete all EntityFramework.* packages (This is to avoid another error later when trying to "Enable-Migrations" and "Add-Migration")
+
+&nbsp;
+
+3. Verify update by using VSCode to search any leftover: Ctrl+Shift+F and search for 6.1.2
+&nbsp;
+
+<img width="468" height="233" alt="image" src="https://github.com/user-attachments/assets/facd11a2-17ec-4ff2-8097-16719f935cf0" />
+
+
+
+# Install dotnet ef as global tool
+
+- `cd` into the correct folder from your your command line interface (CLI) in Visual Studio
 
 - Open console in Visual Studio:
 
 <img width="653" height="627" alt="image" src="https://github.com/user-attachments/assets/eb56b966-6940-4f3a-ac4f-f8739e043fa4" />
-
-## Make Entity Framework work
-1. Install dotnet ef as global tool
 
 - `cd WhoOwesWhat.DataProvider`
 - Set "Default project to "WhoOwesWhat.DataProvider"
@@ -40,9 +65,6 @@ Make sure that this is happening before continuing
 
 <img width="718" height="359" alt="image" src="https://github.com/user-attachments/assets/90b863d7-2811-4f74-a69b-a29278a24a2f" />
 
-
-2. Install latest supported version of **Entity Framework 6.5.1** for the project WhoOwesWhat.DataProvider
-![Manage nuget packages](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/db-migration-images/Update_EntityFrameworkNugetPackage_EF6.5.1.png)
 
 ## Add connection string directly to the `WhoOwesWhatContext` contructor
 In order to be able to seed the WhoOwesWhat database to your SQL Server the correct connection string must be added. This should look something like this: 
