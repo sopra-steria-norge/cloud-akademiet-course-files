@@ -77,7 +77,7 @@ In order to be able to seed the WhoOwesWhat database to your SQL Server the corr
 
         }
 
-## Make sure to enable migrations
+## Enable migrations
 
 Make sure that you have selected the correct project as `Default project` in `Package Manager`. 
 
