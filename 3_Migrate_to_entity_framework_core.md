@@ -22,6 +22,7 @@ Refactored parts of `WhoOwesWhat.Service.Net8`:
 - Refactored dependecies for controllers and made the endpoints `Async()`
 
 ## Use the built-in `Task list` in Visual Studio to locate the TODO's in your solution
+NB: Requires Visual Studio Professional, if you're using the Community version you can search (Ctrl + F) for 'TODO:'.
 
 ![Task list](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/ef-core-migration-images/task-list.png)
 
