@@ -88,7 +88,9 @@ Continue in `Package Manager` and run the command to seed the database (or updat
 - Update-Database -Verbose
 
 ## Verify that the database was seeded into your local db (SqlExpress is already set up)
-Enter Microsoft SQL Server Management Studio (SSMS) and log into SQLEXPRESS. Remeber to tick the `Trust server certificate` box.
+Enter Microsoft SQL Server Management Studio (SSMS) and log into SQLEXPRESS. 
+
+- Remember to tick the `Trust server certificate` box.
 
 ![SSMS log-in](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/db-migration-images/SSMS_login.png)
 
