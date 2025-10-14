@@ -40,6 +40,8 @@ It should automatically select the newly created database for you.
 ### Step 3
 Click on `Options` on the left hand side of the window, and select `Overwrite the existing database (WITH REPLACE)`.
 
+**Make sure `Take tail-Log backup before restore` is not checked if you just created the database**
+
 Click `OK` and you should be good to go.
 
 ![Restore database step 3](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/db-backup/restore-database3.png)
