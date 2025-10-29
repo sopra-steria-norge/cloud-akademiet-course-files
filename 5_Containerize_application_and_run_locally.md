@@ -16,17 +16,22 @@ In Visual Studio we can use built-in functionality to generate a Dockerfile that
 ![Dockerfile in root folder](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/run-container-local-dev/docker-support-on-root-folder.png)
 
 ## Inspect scripts and docker compose files
-Go through the files related to docker compose, the Dockerfile and .bat scripts. 
+In Visual Studio Code have a look through the files related to docker compose, the Dockerfile and .bat scripts to see if you understand what they do.
+
+## Move the created Dockerfile
+The Dockerfile we created needs to be in the correct place for the next tasks to work, so move it to the root of the WhoOwesWhat-Net8 folder if it's not there.
 
 ## Create MS SQL image and run in a container
-- Our script will run this file: [Docker compose YAML for database (with database credentials)](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/database/docker-compose.yml)
-- Script to create mssql image and run in container: [docker-compose.up.bat](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/database/docker-compose.up.bat)
+- Run this script in the database folder to create mssql image and run in container: [docker-compose.up.bat](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/database/docker-compose.up.bat)
+
+    - Our script will run this file: [Docker compose YAML for database (with database credentials)](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/database/docker-compose.yml)
 
 ## Verify that you can connect to the database from your local environment
 - Enter Microsoft SQL Server Management Studio (SSMS). 
 - Log into your database that runs in the container you set up. 
 - From your local environment the container is seen as localhost, with the port we specified in our docker-compose setup - port `1434`. 
-- Use the user and password that we specified in our docker-compose setup files (same as the variables in the connectionstring our containerized application uses).
+- The username is the default 'sa' user, short for System Administrator
+- Use password that we specified in our docker-compose setup files (same as the variables in the connectionstring our containerized application uses).
 [Docker compose YAML for database (with database credentials)](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/database/docker-compose.yml)
 - The WhoOwesWhat database wil not exist yet, since the application needs to run, seed database and apply migrations to create the database. We will come to this later. The most important thing in this section is verifying that you can connect to the database. 
 
@@ -34,8 +39,8 @@ Go through the files related to docker compose, the Dockerfile and .bat scripts.
 ![Login - containerized database](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/run-container-local-dev/login-container-db.png)
 
 ## Create WhoOwesWhat image and run our application in a container
-- Our script will run this file: [Docker compose YAML for application WhoOwesWhat](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/docker-compose.yml)
-- Script to create mssql image and run in container: [docker-compose.up.bat](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/docker-compose.up.bat)
+- Run this script in the root folder to create WhoOwesWhat image and run in container: [docker-compose.up.bat](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/docker-compose.up.bat)
+    - Our script will run this file: [Docker compose YAML for application WhoOwesWhat](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/docker-compose.yml)
 
 ## Verify that contiainer runs and enter the Swagger API for WhoOwesWhat
 1. Verify that migrations has been run and that the database for WhoOwesWhat is created
@@ -44,8 +49,7 @@ Go through the files related to docker compose, the Dockerfile and .bat scripts.
 ![Verify database connection and that database is created](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/run-container-local-dev/verify-database-created.png)
 
 2. Test WhoOwesWhat endpoints:
+- This URL should work now: [Swagger URL for localhost:5025](http://localhost:5025/swagger/index.html) 
 - Test health endpoints
 - Create a user
 - Authorize / Get the user you created
-- This URL should work now: [Swagger URL for localhost:5025](http://localhost:5025/swagger/index.html) 
-
