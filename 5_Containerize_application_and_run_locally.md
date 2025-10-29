@@ -22,7 +22,7 @@ Open Visual Studio Code, and go through the files related to Docker compose, the
 
 ## Create MS SQL image and run in a container
 - Our script will run this file: [Docker compose YAML for database (with database credentials)](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/database/docker-compose.yml)
-- Script to create mssql image and run in container: [docker-compose.up.bat](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/database/docker-compose.up.bat)
+- Run this script (to create mssql image and run in container): [docker-compose.up.bat](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/database/docker-compose.up.bat)
 
 ## Verify that you can connect to the database from your local environment
 - Enter Microsoft SQL Server Management Studio (SSMS). 
