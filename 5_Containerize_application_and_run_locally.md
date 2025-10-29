@@ -10,12 +10,15 @@ What we are going to do in this part of the course:
 - Run MS SQL database in separate container in the same network as the service so that the service and database can communicate
 - Run application WhoOwesWhat in its own container and make sure the health endpoints work and that you can execute read & write operations
 
-## Add Docker support...
+## Add Docker support
+First, make sure WhoOwesWhat.Service.Net8 is set as the Startup project.
+
 In Visual Studio we can use built-in functionality to generate a Dockerfile that fits our project.
 ![Add Docker support...](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/run-container-local-dev/add-docker-support.png)
 ![Dockerfile in root folder](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/run-container-local-dev/docker-support-on-root-folder.png)
 
 ## Inspect scripts and docker compose files
+<<<<<<< HEAD
 In Visual Studio Code have a look through the files related to docker compose, the Dockerfile and .bat scripts to see if you understand what they do.
 
 ## Move the created Dockerfile
@@ -25,6 +28,14 @@ The Dockerfile we created needs to be in the correct place for the next tasks to
 - Run this script in the database folder to create mssql image and run in container: [docker-compose.up.bat](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/database/docker-compose.up.bat)
 
     - Our script will run this file: [Docker compose YAML for database (with database credentials)](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/database/docker-compose.yml)
+=======
+Open Visual Studio Code, and go through the files related to Docker compose, the Dockerfile and .bat scripts. 
+
+## Create MS SQL image and run in a container
+- Our script will run this file: [Docker compose YAML for database (with database credentials)](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/database/docker-compose.yml)
+- Run this script (to create mssql image and run in container): [docker-compose.up.bat](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/database/docker-compose.up.bat)
+![Dockerfile in root folder](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/run-container-local-dev/run-MSSQL-container-script.png)
+>>>>>>> bd2e2631919015ac0e0a89fbf68f4252783d86da
 
 ## Verify that you can connect to the database from your local environment
 - Enter Microsoft SQL Server Management Studio (SSMS). 
