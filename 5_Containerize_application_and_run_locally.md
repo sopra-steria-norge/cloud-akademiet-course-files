@@ -18,7 +18,7 @@ In Visual Studio we can use built-in functionality to generate a Dockerfile that
 ![Dockerfile in root folder](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/run-container-local-dev/docker-support-on-root-folder.png)
 
 ## Inspect scripts and docker compose files
-Go through the files related to docker compose, the Dockerfile and .bat scripts. 
+Open Visual Studio Code, and go through the files related to Docker compose, the Dockerfile and .bat scripts. 
 
 ## Create MS SQL image and run in a container
 - Our script will run this file: [Docker compose YAML for database (with database credentials)](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/database/docker-compose.yml)
