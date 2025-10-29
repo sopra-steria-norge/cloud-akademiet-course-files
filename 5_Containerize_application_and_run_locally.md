@@ -18,7 +18,6 @@ In Visual Studio we can use built-in functionality to generate a Dockerfile that
 ![Dockerfile in root folder](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/run-container-local-dev/docker-support-on-root-folder.png)
 
 ## Inspect scripts and docker compose files
-<<<<<<< HEAD
 In Visual Studio Code have a look through the files related to docker compose, the Dockerfile and .bat scripts to see if you understand what they do.
 
 ## Move the created Dockerfile
@@ -28,14 +27,6 @@ The Dockerfile we created needs to be in the correct place for the next tasks to
 - Run this script in the database folder to create mssql image and run in container: [docker-compose.up.bat](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/database/docker-compose.up.bat)
 
     - Our script will run this file: [Docker compose YAML for database (with database credentials)](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/database/docker-compose.yml)
-=======
-Open Visual Studio Code, and go through the files related to Docker compose, the Dockerfile and .bat scripts. 
-
-## Create MS SQL image and run in a container
-- Our script will run this file: [Docker compose YAML for database (with database credentials)](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/database/docker-compose.yml)
-- Run this script (to create mssql image and run in container): [docker-compose.up.bat](https://github.com/sopra-steria-norge/WhoOwesWhat-net8/blob/main/database/docker-compose.up.bat)
-![Dockerfile in root folder](https://github.com/sopra-steria-norge/cloud-akademiet-course-files/blob/main/images/run-container-local-dev/run-MSSQL-container-script.png)
->>>>>>> bd2e2631919015ac0e0a89fbf68f4252783d86da
 
 ## Verify that you can connect to the database from your local environment
 - Enter Microsoft SQL Server Management Studio (SSMS). 
